@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-sdut-oj-数据结构实验之查找一：二叉排序树（待完善）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2017-12-19T13:09:09.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/">SDUT OJ 数据结构实验之查找一：二叉排序树（待完善）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>对应给定的一个序列可以唯一确定一棵二叉排序树。然而，一棵给定的二叉排序树却可以由多种不同的序列得到。例如分别按照序列{3,1,4}和{3,4,1}插入初始为空的二叉排序树，都得到一样的结果。你的任务书对于输入的各种序列，判断它们是否能生成一样的二叉排序树。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>输入包含若干组测试数据。每组数据的第1行给出两个正整数N (n &lt; = 10)和L，分别是输入序列的元素个数和需要比较的序列个数。第2行给出N个以空格分隔的正整数，作为初始插入序列生成一颗二叉排序树。随后L行，每行给出N个元素，属于L个需要检查的序列。简单起见，我们保证每个插入序列都是1到N的一个排列。当读到N为0时，标志输入结束，这组数据不要处理。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>对每一组需要检查的序列，如果其生成的二叉排序树跟初始序列生成的二叉排序树一样，则输出”Yes”，否则输出”No”。</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>4 2<br>3 1 4 2<br>3 4 1 2<br>3 2 4 1<br>2 1<br>2 1<br>1 2<br>0</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>Yes<br>No<br>No</p>
+<blockquote>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
+<p>待完善</p>
+<blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
+<p>#include <iostream><br>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include<algorithm><br>typedef struct node<br>{<br> int data;<br> node* lchild;<br> node* rchild;<br>} Btree,*Qtree;<br> int flag;<br>using namespace std;<br>Qtree Create(Qtree root,int p)<br>{<br> if(root==NULL)<br> {<br> root = (Qtree)malloc(sizeof(Btree));<br> root-&gt;lchild = NULL;<br> root-&gt;rchild = NULL;<br> root-&gt;data = p;<br> }<br> else<br> {<br> if(p &lt; root-&gt;data)<br> {<br> root-&gt;lchild = Create(root-&gt;lchild, p);<br> }<br> else<br> {<br> root-&gt;rchild= Create(root-&gt;rchild,p);<br> }<br> }<br> return root;<br>​<br>}<br>void judge(Qtree root1,Qtree root2)<br>{<br> if(flag == 0)<br> return ;<br> if(root1&amp;&amp;root2)<br> {<br> if(root1-&gt;data == root2-&gt;data)<br> {<br> judge(root1-&gt;lchild,root2-&gt;lchild);<br> judge(root1-&gt;rchild,root2-&gt;rchild);<br> }<br> else<br> {<br> flag = 0;<br> return ;<br> }<br> }<br> else if((!root1)&amp;&amp;(!root2))<br> {<br> return;<br> }<br> else<br> {<br> flag = 0;<br> return ;<br> }<br>}<br>int main()<br>{<br> int n,m,x;<br> while(cin&gt;&gt;n, n)<br> {<br> cin&gt;&gt;m;<br> Qtree root1;<br> root1=NULL;<br> for(int i=0; i&lt;n; i++)<br> {<br> cin&gt;&gt;x;<br> root1 =  Create(root1,x);<br> }<br> while(m--)<br> {<br> Qtree root2;<br> root2 = NULL;<br> for(int i=0; i&lt;n; i++)<br> {<br> cin&gt;&gt;x;<br> root2 = Create(root2,x);<br> }<br> flag =1;<br> judge(root1,root2);<br> if(flag==0)<br> cout&lt;&lt;”No”&lt;&lt;endl;<br> else<br> cout&lt;&lt;”Yes”&lt;&lt;endl;<br> }<br>​<br> }<br>}<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/" data-id="ckpnxl9ou003ma8u46kjwhw04" data-title="SDUT OJ 数据结构实验之查找一：二叉排序树（待完善）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" rel="tag">二叉查找树</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-4-2-电子时钟中的运算符重载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/17/sdut-oj-4-2-%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F%E4%B8%AD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
+  <time class="dt-published" datetime="2017-12-17T12:02:23.000Z" itemprop="datePublished">2017-12-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/17/sdut-oj-4-2-%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F%E4%B8%AD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">SDUT OJ 4-2 电子时钟中的运算符重载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>通过本题目的练习可以运算符重载的方法； 设计一个时间类Time，私有数据成员有hour(时)、minute(分)、second(秒)； 公有成员函数有：setHour(int)设置数据成员hour的值，非法的输入默认为12；setMinue(int)设置数据成员minute的值，非法输入默认为0；setSecond(int)设置数据成员second的值，非法输入默认为0；setTime(int，int，int)设置时、分、秒三个数据成员的值；三个成员函数int getHour(); int getMinute(); int getSecond();分别用于获取时间对象的属性值。 定义两个构造函数Time(); 和 Time(int,int,int); 定义一个成员函数void displayTime(); 用于显示时间，注意格式为 hh:mm:ss，位数不够用0填充； 定义一个时钟增加1的成员函数 void tick(); 把second的值加1，并注意是否到60； 定义一个成员或友元函数 bool operator= =(….); 判断两个时间对象的值是否相等； 定义一个成员或友元函数bool operator&gt;(…..); 判断第一个时间对象的值是否大于第二个时间对象的值。 在主函数main()中指定开始时间和结束时间，并调用相应成员函数，显示从开始时间到结束时间之间所有时间对象的值，其格式见示例输出。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>输入6个整数，之间用一个空格间隔；分别表示开始时间的时、分、秒和结束时间的时、分、秒的值</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>从开始时间到结束时间之间所有时间对象的值；每个值占一行，格式为hh:mm:ss</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>01 01 01 01 01 10</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>01:01:01<br>01:01:02<br>01:01:03<br>01:01:04<br>01:01:05<br>01:01:06<br>01:01:07<br>01:01:08<br>01:01:09<br>01:01:10</p>
+<h4 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h4><p>输入 11 10 12 10 12 56 输出 The begin time is not earlier than the end time!</p>
+<blockquote>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
+<p>考察函数的重载，重载“&gt;”时有疑问，为什么不能加const？。</p>
+<blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
+<p>#include<iostream><br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#include&lt;math.h&gt;<br>using namespace std;<br>​<br>class Time<br>{<br>private:<br> int h,m,s;<br>public:<br> void setHour(int x = 12)<br> {<br> if(x&lt;0x&gt;12)<br> h = 12;<br> else<br> h = x;<br> }<br> void setMinute(int x = 0)<br> {<br> if(x&lt;0x&gt;60)<br> m = 0;<br> else<br> m = x;<br> }<br> void setSecond(int x= 0)<br> {<br> if(x&lt;0x&gt;60)<br> s = 0;<br> else<br> s = x;<br> }<br> void setTime(int x=12,int y=0,int z = 0)<br> {<br> this-&gt;setHour(x);<br> this-&gt;setMinute(y);<br> this-&gt;setSecond(z);<br> }<br> int getHour()<br> {<br> return this-&gt;h;<br> }<br> int getMinute()<br> {<br> return this-&gt;m;<br> }<br> int getSecond()<br> {<br> return this-&gt;s;<br> }<br> Time():h(12),m(0),s(0) {}<br> Time(int x,int y,int z)<br> {<br> this-&gt;setTime(x,y,z);<br> }<br> void displayTime()<br> {<br> printf(“%02d:%02d:%02d\n”,h,m,s);<br> }<br> void tick()<br> {<br> s = s+1;<br> if(s==60)<br> {<br> s = 0;<br> m = m+1;<br> if(m==60)<br> {<br> m = 0;<br> h = h+1;<br> if(h==12)<br> h = 0;<br> }<br> }<br> setTime(h,m,s);<br> }<br> int getsum()//将时间转化成秒，以便比较。<br> {<br> return (h*3600+m*60+s);<br> }<br> bool operator ==(const Time &amp;c2)//重载“==”<br> {<br> if(this-&gt;s==c2.s&amp;&amp;this-&gt;m==c2.m&amp;&amp;this-&gt;h==c2.h)<br> {<br> return true;<br> }<br> return false;<br> }<br> bool operator &gt;(Time &amp;c2)//不能写成(const Time &amp;c2)，为什么？<br> {<br> int a = getsum();<br> int b = c2.getsum();<br> if(a&gt;b)<br> return true;<br> return false;<br> }<br>};<br>int main()<br>{<br> int a1,a2,b1,b2,c1,c2;<br> cin&gt;&gt;a1&gt;&gt;b1&gt;&gt;c1&gt;&gt;a2&gt;&gt;b2&gt;&gt;c2;<br> Time a(a1,b1,c1);<br> Time b(a2,b2,c2);<br> if(a&gt;b)<br> cout&lt;&lt;”The begin time is not earlier than the end time!”&lt;&lt;endl;<br> else<br> {<br> while(b&gt;aa==b)<br> {<br> a.displayTime();<br> a.tick();<br> }<br> }<br>​<br>}<br>​<br>​<br>​<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/17/sdut-oj-4-2-%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F%E4%B8%AD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="ckpnxl9n80018a8u41jcb4kx8" data-title="SDUT OJ 4-2 电子时钟中的运算符重载" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD%EF%BC%8Cconst/" rel="tag">重载，const</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-4-1-复数类的运算符重载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/17/sdut-oj-4-1-%E5%A4%8D%E6%95%B0%E7%B1%BB%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
+  <time class="dt-published" datetime="2017-12-17T11:10:07.000Z" itemprop="datePublished">2017-12-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/17/sdut-oj-4-1-%E5%A4%8D%E6%95%B0%E7%B1%BB%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/">SDUT OJ 4-1 复数类的运算符重载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>通过本题目的练习可以掌握成员运算符重载及友元运算符重载 要求定义一个复数类，重载加法和减法运算符以适应对复数运算的要求，重载插入运算符(&lt;&lt;)以方便输出一个复数的要求。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>要求在主函数中创建对象时初始化对象的值。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>输出数据共有4行，分别代表a，b的值和它们求和、求差后的值</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>无</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>a=3.2+4.5i<br>b=8.9+5.6i<br>a+b=12.1+10.1i<br>a-b=-5.7-1.1i</p>
+<blockquote>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
+<p>考察函数的重载。</p>
+<blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
+<p>#include<iostream><br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>#include&lt;math.h&gt;<br>using namespace std;<br>​<br>class Complex<br>{<br>private:<br> double real,imag;<br>public:<br> Complex(double a = 0.0,double b = 0.0):real(a),imag(b) {}<br> Complex operator +(const Complex &amp;c2)//类里面重载它的+<br> {<br> return Complex(this-&gt;real+c2.real,this-&gt;imag+c2.imag);<br> }<br> Complex operator -(const Complex &amp;c2)//重载它的-<br> {<br> return Complex(this-&gt;real-c2.real,this-&gt;imag-c2.imag);<br> }<br> friend ostream &amp;operator &lt;&lt;(ostream &amp;out,const Complex &amp;c2);//声明友元函数重载<br>};<br> ostream &amp;operator&lt;&lt;(ostream &amp;out,const Complex &amp;c2)//重载输出符<br> {<br> if(c2.imag&lt;0)<br> out&lt;&lt;c2.real&lt;&lt;c2.imag&lt;&lt;”i”;<br> else<br> out&lt;&lt;c2.real&lt;&lt;”+”&lt;&lt;c2.imag&lt;&lt;”i”;<br> return out;<br> }<br>int main()<br>{<br> Complex a(3.2,4.5),b(8.9,5.6),c;<br> c = a+b;<br> cout&lt;&lt;”a=”&lt;&lt;a&lt;&lt;endl;<br> cout&lt;&lt;”b=”&lt;&lt;b&lt;&lt;endl;<br> cout&lt;&lt;”a+b=”&lt;&lt;c&lt;&lt;endl;<br> c = a-b;<br> cout&lt;&lt;”a-b=”&lt;&lt;c&lt;&lt;endl;<br>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/17/sdut-oj-4-1-%E5%A4%8D%E6%95%B0%E7%B1%BB%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="ckpnxl9n60015a8u4ci9g9x46" data-title="SDUT OJ 4-1 复数类的运算符重载" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD/" rel="tag">重载</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-3-6-静态数据成员与静态成员函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/17/sdut-oj-3-6-%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2017-12-17T07:09:16.000Z" itemprop="datePublished">2017-12-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/17/sdut-oj-3-6-%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/">SDUT OJ 3-6 静态数据成员与静态成员函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>通过本题目的练习可以掌握静态数据成员和静态成员函数的用法 要求设计一个点类Point，它具有两个double型的数据成员x，y。和一个静态数据成员count ，用以记录系统中创建点对象的数目。为该类设计构造函数和析构函数，在其中对count的值做修改，体现点的数目的动态变化。并为其添加一个静态成员函数用以输出count的值；成员函数showPoint()用于输出点的信息。 并编写主函数，输出以下的内容。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>无</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>​</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>x=0,Y=0<br>the number of points is 3<br>Deconstructor point x=5<br>Deconstructor point x=3<br>Deconstructor point x=0</p>
+<blockquote>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
+<p>考察对c++对象的静态成员变量和静态成员函数的使用。 静态成员变量，可以看做是一个类和对象共有的变量。 静态成员函数同上。 静态成员函数和静态变量可以通过类和对象调用，非静态成员函数只能通过对象来调用。 非静态成员函数可以调用静态成员变量。 PS：这道题太他妈水了</p>
+<blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
+<p>#include<iostream><br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>​<br>using namespace std;<br>​<br>class Point<br>{<br>private:<br> double x,y;<br> static int count;//静态数据变量的声明，用于记录点的个数<br>public:<br> void ShowPoint();<br> Point(double a = 0,double b = 0);<br> static void ShowCount();//声明静态成员函数，静态成员函数若是想访问非静态成员，必须通过对象名。<br>};<br>int Point::count = 0;//静态数据成员定义和初始化，使用类名限定<br>void Point::ShowCount()<br>{<br> cout&lt;&lt;”the number of points is “&lt;&lt;count&lt;&lt;endl;<br>}<br>Point::Point(double a,double b)<br>{<br> count++;<br> x = a;<br> y = b;<br>}<br>void Point::ShowPoint()<br>{<br> cout&lt;&lt;”Deconstructor point x=”&lt;&lt;this-&gt;x&lt;&lt;endl;<br>}<br>int main()<br>{<br> cout&lt;&lt;”x=0,Y=0”&lt;&lt;endl;<br> Point a(5),b(3),c(0);<br> Point::ShowCount();<br> a.ShowPoint();<br> b.ShowPoint();<br> c.ShowPoint();<br>}<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/17/sdut-oj-3-6-%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/" data-id="ckpnxl9n3000ya8u4h59w6e5z" data-title="SDUT OJ 3-6 静态数据成员与静态成员函数" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1/" rel="tag">对象</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" rel="tag">静态成员变量</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-3-5-学生成绩统计" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/16/sdut-oj-3-5-%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%BB%9F%E8%AE%A1/" class="article-date">
+  <time class="dt-published" datetime="2017-12-16T13:07:52.000Z" itemprop="datePublished">2017-12-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C/">C++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/16/sdut-oj-3-5-%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%BB%9F%E8%AE%A1/">SDUT OJ 3-5 学生成绩统计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>通过本题目练习可以掌握对象数组的用法，主要是对象数组中数据的输入输出操作。 设计一个学生类Student 它具有私有的数据成员：学号、姓名、数学成绩、英语成绩、计算机成绩；具有公有的成员函数：求三门课总成绩的函数int sum(); 求三门课平均成绩的函数 double average(); 输出学生基本信息、总成绩和平均成绩的函数 void print()； 设置学生数据信息的函数void set_stu_info(int n,char *p,int m,int e,int c)。 请编写主函数，建立学生对象数组，从键盘输入一组学生数据，输出学生的成绩统计表： stuID 姓名 数学 英语 计算机 总成绩 平均成绩 001 xxx 90 85 95 270 90.0 002 yyy 95 98 92 285 95.0</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>输入数据有5行，代表5个学生的信息。 每行有5个数据，数据间用一个空格分隔，分别代表学生的学号、姓名、数学成绩、英语成绩和计算机成绩。除了姓名是符号串外，其他均为整型数据，数据在int类型范围内。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>输出数据一共有7行。 第一行输出提示信息“Input the messages of five students(StudentID Name Math English Computer )” 第二行输出一个空行，进行输入输出间的间隔 第三行输出表头“StuID Name Math Eng Com Total Average” ，这一行有7个数据，数据间用制表符’\t’分隔，分别代表学生的学号、姓名、数学成绩、英语成绩、计算机成绩、总成绩和平均成绩。其中平均成绩为实型数据，保留1位小数。 第4-8行分别输出5个学生的相关数据。每个数据占一个制表符的空间。格式同上。</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>1001 Andy 89 90 93<br>1002 Mary 93 95 98<br>1003 Luis 90 85 98<br>1004 Sam 91 95 98<br>1005 Lily 87 98 99</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>Input the messages of five students(StudentID Name Math English Computer )<br>​<br>StuID   Name    Math    Eng Com Total   Average<br>1001    Andy    89  90  93  272 90.7<br>1002    Mary    93  95  98  286 95.3<br>1003    Luis    90  85  98  273 91.0<br>1004    Sam 91  95  98  284 94.7<br>1005    Lily    87  98  99  284 94.7</p>
+<blockquote>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
+<p>考察对c++对象的认识，c++数组的应用。</p>
+<blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
+<p>#include<iostream><br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>​<br>using namespace std;<br>​<br>class Student<br>{<br>private:<br> int num,mat,eng,com;<br> char name[20];<br>public:<br> int sum();<br> double average();<br> void print();<br> void set_stu_info(int n,char *p,int m,int e,int c);<br>};<br>int Student::sum()<br>{<br> int sum ;<br> sum = this-&gt;mat+this-&gt;eng+this-&gt;com;<br> return sum;<br>}<br>double Student::average()<br>{<br> double ave;<br> ave = (this-&gt;sum())*1.0/3;<br> return ave;<br>}<br>void Student::set_stu_info(int n,char *p,int m,int e,int c)<br>{<br> this-&gt;num = n;<br> strcpy(this-&gt;name,p);<br> this-&gt;mat = m;<br> this-&gt;eng = e;<br> this-&gt;com = c;<br>}<br>void Student::print()<br>{<br> cout&lt;&lt;this-&gt;num&lt;&lt;”\t”&lt;&lt;this-&gt;name&lt;&lt;”\t”&lt;&lt;this-&gt;mat&lt;&lt;”\t”&lt;&lt;this-&gt;eng&lt;&lt;”\t”&lt;&lt;this-&gt;com&lt;&lt;”\t”;<br>}<br>int main()<br>{<br> int n,m,e,c;<br> char p[20];<br> Student stu[6];<br> for(int i=0;i&lt;5;i++)<br> {<br> cin&gt;&gt;n&gt;&gt;p&gt;&gt;m&gt;&gt;e&gt;&gt;c;<br> stu[i].set_stu_info(n,p,m,e,c);<br> }<br> cout&lt;&lt;”Input the messages of five students(StudentID Name Math English Computer )”&lt;&lt;endl&lt;&lt;endl;<br> cout&lt;&lt;”StuID    Name    Math    Eng Com Total   Average”&lt;&lt;endl;<br> for(int i=0;i&lt;5;i++)<br> {<br> stu[i].print();<br> printf(“%d\t%.1lf\n”,stu[i].sum(),stu[i].average());<br> }<br>}<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/16/sdut-oj-3-5-%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%BB%9F%E8%AE%A1/" data-id="ckpnxl9mz000sa8u4fu1zdtv7" data-title="SDUT OJ 3-5 学生成绩统计" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" rel="tag">对象数组</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-数据结构实验之图论一：基于邻接矩阵的广度优" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E4%B8%80%EF%BC%9A%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98/" class="article-date">
+  <time class="dt-published" datetime="2017-12-07T04:03:05.000Z" itemprop="datePublished">2017-12-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E4%B8%80%EF%BC%9A%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98/">SDUT OJ 数据结构实验之图论一：基于邻接矩阵的广度优先搜索遍历</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>给定一个无向连通图，顶点编号从0到n-1，用广度优先搜索(BFS)遍历，输出从某个顶点出发的遍历序列。(同一个结点的同层邻接点，节点编号小的优先遍历）</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>输入第一行为整数n（0&lt; n &lt;100），表示数据的组数。对于每组数据，第一行是三个整数k，m，t（0＜k＜100，0＜m＜(k-1)*k/2，0＜ t＜k），表示有m条边，k个顶点，t为遍历的起始顶点。下面的m行，每行是空格隔开的两个整数u，v，表示一条连接u，v顶点的无向边。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>输出有n行，对应n组输出，每行为用空格隔开的k个整数，对应一组数据，表示BFS的遍历结果。</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>1<br>6 7 0<br>0 3<br>0 4<br>1 4<br>1 5<br>2 3<br>2 4<br>3 5<br>​</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>0 3 4 2 5 1</p>
+<h4 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h4><p>以邻接矩阵作为存储结构。</p>
+<blockquote>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
+<p>广度优先搜索（dfs）。 用邻接矩阵（二维数组mp）作为图的储存结构。初始化数组mp为0，当两点a,b有通路时，记录<code>mp[a][b] = 1</code>。再开一个标记数组<code>vis</code>表示已经搜索过的点，已经搜索过就令<code>vis[i] = 1</code> 先构建一个队列，这里我用数组模拟队列，选择一个遍历的起始点x，加入队列，标记<code>vis[x] = 1</code>。找与它邻接的点时需要从队列中 拿出来，先输出，然后通过for循环找与它邻接的且未被访问过的点，依次入队并且标记为已访问。</p>
+<blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
+<p>#include&lt;stdio.h&gt;<br>#include<iostream><br>#include&lt;string.h&gt;<br>#define inf 0x3f3f3f<br>using namespace std;<br>int n,mp[110][110],k,m,t,u,v;<br>void bfs(int x)<br>{<br> int q[110],head,tail;//数组模拟队列，head为队列的头结点下标，tail为尾节点下标<br> int vis[110];//标记数组，记录某一点是否已经被访问<br> int t,count = 0;<br> memset(vis,0,sizeof(vis));<br> memset(q,0,sizeof(q));<br> head = tail = 0;<br> q[++tail] = x;<br> vis[x]=1;<br> count++;<br> while(head&lt;tail)//当队列不空，循环<br> {<br> t = q[++head];//队首元素出队<br> if(count==1)<br> cout&lt;&lt;t;<br> else<br> cout&lt;&lt;” “&lt;&lt;t;<br> for(int i=0; i&lt;k; i++)//搜索队首元素的邻接点<br> {<br> if(mp[t][i]==1&amp;&amp;vis[i]==0)<br> {<br> vis[i]=1;<br> q[++tail] = i;//邻接点进栈<br> count++;<br> }<br> }<br> }<br>}<br>int main()<br>{<br> cin&gt;&gt;n;<br> while(n--)<br> {<br> memset(mp,0,sizeof(mp);//初始化路径为0 表示路不通<br> cin&gt;&gt;k&gt;&gt;m&gt;&gt;t;<br> for(int i=1; i&lt;=m; i++)<br> {<br> cin&gt;&gt;u&gt;&gt;v;<br> mp[u][v] = mp[v][u] = 1;//表示u，v两点是通的<br> }<br> }<br> bfs(t);//t作为起始点进行搜索<br>}<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E4%B8%80%EF%BC%9A%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98/" data-id="ckpnxl9nf001ka8u44nmj9a6w" data-title="SDUT OJ 数据结构实验之图论一：基于邻接矩阵的广度优先搜索遍历" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-数据结构实验之图论四：迷宫探索" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%9B%9B%EF%BC%9A%E8%BF%B7%E5%AE%AB%E6%8E%A2%E7%B4%A2/" class="article-date">
+  <time class="dt-published" datetime="2017-12-06T16:47:04.000Z" itemprop="datePublished">2017-12-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%9B%9B%EF%BC%9A%E8%BF%B7%E5%AE%AB%E6%8E%A2%E7%B4%A2/">SDUT OJ 数据结构实验之图论四：迷宫探索</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>有一个地下迷宫，它的通道都是直的，而通道所有交叉点(包括通道的端点)上都有一盏灯和一个开关；请问如何从某个起点开始在迷宫中点亮所有的灯并回到起点？</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>连续T组数据输入，每组数据第一行给出三个正整数，分别表示地下迷宫的结点数N(1 &lt; N &lt;= 1000)、边数M(M &lt;= 3000)和起始结点编号S，随后M行对应M条边，每行给出一对正整数，表示一条边相关联的两个顶点的编号。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>若可以点亮所有结点的灯，则输出从S开始并以S结束的序列，序列中相邻的顶点一定有边，否则只输出部分点亮的灯的结点序列，最后输出0，表示此迷宫不是连通图。访问顶点时约定以编号小的结点优先的次序访问，点亮所有可以点亮的灯后，以原路返回的方式回到起点。</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>1<br>6 8 1<br>1 2<br>2 3<br>3 4<br>4 5<br>5 6<br>6 4<br>3 6<br>1 5</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>1 2 3 4 5 6 5 4 3 2 1</p>
+<blockquote>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
+<p>本质上就是基于深度优先的搜索（dfs）。 题目的描述有些坑点，不管是不是连通图，都要搜索到最深处，然后原路返回输出，即1-2-3-4 5 应该输出1 2 3 4 3 2 1 0 可以开一个step数组，记录返回时的步数然后输出的时候只要输出step数组就可以了。如果是连通图，在叶子节点只记录一次，在分支节点处记录【由此节点引出的分支个数】次，所以连通图的step下标应该是2n-1，不是2n-1就接着输出0。</p>
+<blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
+<p>#include <iostream><br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>using namespace std;<br>int a[1010][1010],visited[1110],n,flag,tmp,p,step[2020];<br>void dfs(int x)<br>{<br> step[++p]=x;<br> visited[x] = 1;<br> flag++;<br> for(int i=1; i&lt;=n; i++)<br> {<br> if(a[x][i]==1&amp;&amp;visited[i]==0)<br> {<br> dfs(i);<br> step[++p] = x;<br> }<br> }<br>}<br>int main()<br>{<br> int k,m,t,u,v,s;<br> cin&gt;&gt;t;<br> while(t--)<br> {<br> cin&gt;&gt;n&gt;&gt;m&gt;&gt;s;<br> memset(a,0,sizeof(a));<br> memset(visited,0,sizeof(visited));<br> memset(step,0,sizeof(step));<br> flag = 0;<br> tmp = 0;<br> p = 0;<br> for(int i=1; i&lt;=m; i++)<br> {<br> cin&gt;&gt;u&gt;&gt;v;<br> a[u][v] = 1;<br> a[v][u]=1;<br> }<br> dfs(s);<br> for(int i=1;i&lt;=p;i++)<br> {<br> if(i==p)<br> printf(“%d”,step[i]);<br> else<br> printf(“%d “,step[i]);<br> }<br> if(p==2*n-1)<br> printf(“\n”);<br> else<br> printf(“ 0\n”);<br> }<br>}<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%9B%9B%EF%BC%9A%E8%BF%B7%E5%AE%AB%E6%8E%A2%E7%B4%A2/" data-id="ckpnxl9nm001qa8u4g2mz9mdk" data-title="SDUT OJ 数据结构实验之图论四：迷宫探索" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-数据结构实验之图论六：村村通公路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/03/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%85%AD%EF%BC%9A%E6%9D%91%E6%9D%91%E9%80%9A%E5%85%AC%E8%B7%AF/" class="article-date">
+  <time class="dt-published" datetime="2017-12-03T11:10:03.000Z" itemprop="datePublished">2017-12-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/03/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%85%AD%EF%BC%9A%E6%9D%91%E6%9D%91%E9%80%9A%E5%85%AC%E8%B7%AF/">SDUT OJ 数据结构实验之图论六：村村通公路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>当前农村公路建设正如火如荼的展开，某乡镇政府决定实现村村通公路，工程师现有各个村落之间的原始道路统计数据表，表中列出了各村之间可以建设公路的若干条道路的成本，你的任务是根据给出的数据表，求使得每个村都有公路连通所需要的最低成本。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>连续多组数据输入，每组数据包括村落数目N(N &lt;= 1000)和可供选择的道路数目M(M &lt;= 3000)，随后M行对应M条道路，每行给出3个正整数，分别是该条道路直接连通的两个村庄的编号和修建该道路的预算成本，村庄从1～N编号。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>输出使每个村庄都有公路连通所需要的最低成本，如果输入数据不能使所有村庄畅通，则输出-1，表示有些村庄之间没有路连通。</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>5 8<br>1 2 12<br>1 3 9<br>1 4 11<br>1 5 3<br>2 3 6<br>2 4 9<br>3 4 4<br>4 5 6<br>​</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>19</p>
+<p>其实就是求最小生成树。</p>
+<p>#include&lt;stdio.h&gt;<br>#include<iostream><br>#include&lt;string.h&gt;<br>using namespace std;<br>#define inf 0x3f3f3f<br>int n,m,a,b,c,visited[1100],mp[1100][1100];<br>void prim()<br>{<br> int dfs[1100];//（新建一个树） 储存原图中每个点到树的最短距离<br> int min;//储存到此树的最短且未被访问过的节点的路径<br> int p;//储存到此树的最短且未被访问过的节点<br> int flag = 0;//标记变量，如果未将所有的点遍历到，但是却走不通了，令flag=1<br> int sum = 0;//记录最小生成树权值之和<br> for(int i=1; i&lt;=n; i++)//第一层for循环是把第一个节点加入到树中 ，剩下其余节点到此树的最短距离就是到该点的距离<br> {<br> dfs[i]  = mp[1][i];<br> }<br> visited[1] = 1;<br> for(int i=1; i&lt;n; i++)//把剩余的n-1个点加到树中<br> {<br> min = inf;//默认为最大值<br> p = 0;<br> for(int j = 1; j&lt;=n; j++)//找出到此树的最短且未被访问过的节点<br> {<br> if(!visited[j] &amp;&amp; dfs[j]&lt;min)<br> {<br> min = dfs[j];<br> p = j;<br> }<br>​<br> }<br> if(min==inf)//证明路径不通，不是连通图<br> {<br> flag = 1;<br> break;<br> }<br> sum = sum + min;<br> visited[p]= 1;//将新找到的节点标记为已访问<br> for(int j=1; j&lt;=n; j++)//重置dfs  即剩余所有点到该树的最短距离  只需将剩余点到之前的树的最短距离和到新加入点的距离作比较，去较小的值<br> {<br> if(!visited[j]&amp;&amp; dfs[j]&gt;mp[p][j])<br> {<br> dfs[j] = mp[p][j];<br> }<br> }<br> }<br> if(flag==1)<br> printf(“-1\n”);<br> else<br> printf(“%d\n”,sum);<br>}<br>int main()<br>{<br> while(cin&gt;&gt;n&gt;&gt;m)<br> {<br> memset(mp,inf,sizeof(mp));<br> memset(visited,0,sizeof(visited));<br> for(int i = 1; i&lt;=m; i++)<br> {<br> cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;<br> mp[a][b] = c;//储存路径的权值，路不通为无穷大<br> mp[b][a] = c;<br> }<br> prim();<br> }<br>}<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/03/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%85%AD%EF%BC%9A%E6%9D%91%E6%9D%91%E9%80%9A%E5%85%AC%E8%B7%AF/" data-id="ckpnxl9ni001na8u4cwbyd6fl" data-title="SDUT OJ 数据结构实验之图论六：村村通公路" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="tag">最小生成树</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-c语言实验-打印数字图形" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/11/18/sdut-oj-c%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E6%89%93%E5%8D%B0%E6%95%B0%E5%AD%97%E5%9B%BE%E5%BD%A2/" class="article-date">
+  <time class="dt-published" datetime="2017-11-18T08:52:06.000Z" itemprop="datePublished">2017-11-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/11/18/sdut-oj-c%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E6%89%93%E5%8D%B0%E6%95%B0%E5%AD%97%E5%9B%BE%E5%BD%A2/">SDUT OJ C语言实验——打印数字图形</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="C语言实验——打印数字图形"><a href="#C语言实验——打印数字图形" class="headerlink" title="C语言实验——打印数字图形"></a>C语言实验——打印数字图形</h3><p>Time Limit: 1000MS Memory Limit: 65536KB</p>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>从键盘输入一个整数n(1≤n≤9),打印出指定的数字图形。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>正整数n（1≤n≤9）。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>指定数字图形。</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>5</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p> 1<br> 121<br> 12321<br> 1234321<br>123454321<br> 1234321<br> 12321<br> 121<br> 1</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>#include <iostream><br>#include&lt;math.h&gt;<br>#include&lt;stdio.h&gt;<br>​<br>using namespace std;<br>void Print(int n,int m)<br>{<br> if(n&gt;m)<br> return;<br> for(int i=1;i&lt;=m-n;i++)<br> cout&lt;&lt;” “;<br> for(int i=1;i&lt;=n;i++)<br> {<br> cout &lt;&lt;i;<br> }<br> for(int j=n-1;j&gt;=1;j--)<br> cout &lt;&lt;j;<br> cout &lt;&lt;endl;<br> Print(n+1,m);<br> if(n&lt;m)<br> {<br> for(int i=1;i&lt;=m-n;i++)<br> cout&lt;&lt;” “;<br> for(int i=1;i&lt;=n;i++)<br> {<br> cout &lt;&lt;i;<br> }<br> for(int j=n-1;j&gt;=1;j--)<br> cout &lt;&lt;j;<br> cout&lt;&lt;endl;<br> }<br>​<br>}<br>int main()<br>{<br> int n;<br> cin &gt;&gt;n;<br> Print(1,n);<br>}<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/11/18/sdut-oj-c%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E6%89%93%E5%8D%B0%E6%95%B0%E5%AD%97%E5%9B%BE%E5%BD%A2/" data-id="ckpnxl9na001ca8u4gdgyd4hp" data-title="SDUT OJ C语言实验——打印数字图形" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-laravel判断数据库中是否有该值" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/11/15/laravel%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E8%AF%A5%E5%80%BC/" class="article-date">
+  <time class="dt-published" datetime="2017-11-15T15:39:03.000Z" itemprop="datePublished">2017-11-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/11/15/laravel%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E8%AF%A5%E5%80%BC/">laravel判断数据库中是否有该值</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>自己在学习过程中的一点问题 记下来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">$users = DB::table(&#x27;users&#x27;)-&gt;where(&#x27;id&#x27;,$id)-&gt;get();</span><br><span class="line"></span><br><span class="line">if($users)&#123;</span><br><span class="line">//有数据</span><br><span class="line">&#125;else&#123;</span><br><span class="line">//没数据</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line">if(is_null($users))&#123;</span><br><span class="line">//</span><br><span class="line">&#125;</span><br><span class="line">或</span><br><span class="line">if(empty($users))&#123;</span><br><span class="line">//</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上方法都是不行的，在使用Laravel Eloquent模型时，我们要判断取出的结果集是否为空，但我们发现直接使用is_null或empty是无法判段它结果集是否为空的。 var_dump之后我们很容易发现，即使取到的空结果集， Eloquent仍然会返回object(Illuminate\Support\Collection)对象实例。其实，Eloquent已经给我们封装几个判断方法如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$users</span> = DB::table(<span class="string">&#x27;users&#x27;</span>)-&gt;where(<span class="string">&#x27;id&#x27;</span>,<span class="variable">$id</span>)-&gt;get();</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$users</span>-&gt;first()) &#123;<span class="comment">//若无数据，打印出来为null</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!<span class="variable">$users</span>-&gt;isEmpty()) &#123;</span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$users</span>-&gt;count()) &#123;<span class="comment">//若无数据，打印出来为0</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/11/15/laravel%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E8%AF%A5%E5%80%BC/" data-id="ckpnxl9mq000ea8u45865g54n" data-title="laravel判断数据库中是否有该值" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/" rel="tag">laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E5%AE%9A%E5%80%BC/" rel="tag">判断数据库是否有特定值</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/" rel="tag">CI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array-shift/" rel="tag">array_shift()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">centos，服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmder/" rel="tag">cmder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/" rel="tag">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mount/" rel="tag">mount</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/" rel="tag">mysqldump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem/" rel="tag">rem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" rel="tag">二叉查找树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%BC%A0%E5%8F%82/" rel="tag">二维数组传参</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E5%AE%9A%E5%80%BC/" rel="tag">判断数据库是否有特定值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%A1%86/" rel="tag">命令框</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1/" rel="tag">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" rel="tag">对象数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" rel="tag">希尔排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8E%92%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BD%93/" rel="tag">快排，结构体</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" rel="tag">恢复数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%85%E9%9A%9C/" rel="tag">故障</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA/" rel="tag">数据导出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB/" rel="tag">数据库迁移</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/" rel="tag">无法启动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="tag">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E7%AB%99%E7%82%B9/" rel="tag">虚拟站点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD/" rel="tag">重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD%EF%BC%8Cconst/" rel="tag">重载，const</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" rel="tag">静态成员变量</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CI/" style="font-size: 10px;">CI</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/array-shift/" style="font-size: 10px;">array_shift()</a> <a href="/tags/centos%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">centos，服务器</a> <a href="/tags/cmder/" style="font-size: 10px;">cmder</a> <a href="/tags/dfs/" style="font-size: 15px;">dfs</a> <a href="/tags/laravel/" style="font-size: 20px;">laravel</a> <a href="/tags/mount/" style="font-size: 10px;">mount</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/mysqldump/" style="font-size: 10px;">mysqldump</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" style="font-size: 10px;">二叉查找树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 10px;">二维数组</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%BC%A0%E5%8F%82/" style="font-size: 10px;">二维数组传参</a> <a href="/tags/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E5%AE%9A%E5%80%BC/" style="font-size: 10px;">判断数据库是否有特定值</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E6%A1%86/" style="font-size: 10px;">命令框</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 20px;">图论</a> <a href="/tags/%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">对象</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" style="font-size: 10px;">对象数组</a> <a href="/tags/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">希尔排序</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E6%8E%92%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 10px;">快排，结构体</a> <a href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">恢复数据</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%85%E9%9A%9C/" style="font-size: 10px;">故障</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA/" style="font-size: 10px;">数据导出</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">数据库迁移</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/" style="font-size: 10px;">无法启动</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 10px;">最小生成树</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E7%AB%99%E7%82%B9/" style="font-size: 10px;">虚拟站点</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E8%BD%BD/" style="font-size: 15px;">重载</a> <a href="/tags/%E9%87%8D%E8%BD%BD%EF%BC%8Cconst/" style="font-size: 10px;">重载，const</a> <a href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" style="font-size: 10px;">静态成员变量</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/05/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/27/2020%E5%8C%97%E7%A7%91%E5%A4%A7%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">2020北科大考研复试</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">IT项目管理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/">迁移数据库文件到另一台服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/">记一次服务器无法启动后，从服务器取出数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

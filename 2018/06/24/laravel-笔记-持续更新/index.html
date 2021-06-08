@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Laravel 笔记 持续更新 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="###安装  composer create-project --prefer-dist laravel&#x2F;laravel blog 5.5.*  路由  基本形式 ： 12345678910111213141516Route::get(&amp;#x27;&#x2F;&amp;#x27;,&amp;#x27;控制器@方法&amp;#x27;);Route::get(&amp;#x27;&#x2F;post&amp;#x27;,&amp;#x27;\App\Http\Co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 笔记 持续更新">
+<meta property="og:url" content="http://example.com/2018/06/24/laravel-%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="###安装  composer create-project --prefer-dist laravel&#x2F;laravel blog 5.5.*  路由  基本形式 ： 12345678910111213141516Route::get(&amp;#x27;&#x2F;&amp;#x27;,&amp;#x27;控制器@方法&amp;#x27;);Route::get(&amp;#x27;&#x2F;post&amp;#x27;,&amp;#x27;\App\Http\Co">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-06-24T06:46:19.000Z">
+<meta property="article:modified_time" content="2021-06-05T02:04:44.909Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="laravel">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-laravel-笔记-持续更新" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/06/24/laravel-%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" class="article-date">
+  <time class="dt-published" datetime="2018-06-24T06:46:19.000Z" itemprop="datePublished">2018-06-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PHP/">PHP</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Laravel 笔记 持续更新
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>###安装</p>
+</blockquote>
+<p><code>composer create-project --prefer-dist laravel/laravel blog 5.5.*</code></p>
+<blockquote>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3></blockquote>
+<ul>
+<li><p>基本形式 ：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">&#x27;/&#x27;</span>,<span class="string">&#x27;控制器@方法&#x27;</span>);</span><br><span class="line">Route::get(<span class="string">&#x27;/post&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@index&#x27;</span>);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">对应html代码</span></span><br><span class="line"><span class="comment">&lt;form action = &quot;/post&quot; methot = &quot;GET&quot;&gt;</span></span><br><span class="line"><span class="comment">&lt;/form&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Route::put(<span class="string">&#x27;/post&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@index&#x27;</span>);</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">对应html代码</span></span><br><span class="line"><span class="comment">&lt;form action = &quot;/post&quot; methot = &quot;POST&quot;&gt;</span></span><br><span class="line"><span class="comment">	&#123;&#123;method_filed(&quot;PUT)&#125;&#125;</span></span><br><span class="line"><span class="comment">&lt;/form&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">Route::any(<span class="string">&#x27;/post&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@index&#x27;</span>);<span class="comment">//支持所有提交方法</span></span><br><span class="line">Route::match((<span class="string">&#x27;POST&#x27;</span>,<span class="string">&#x27;GET&#x27;</span>),<span class="string">&#x27;/post&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@index&#x27;</span>);<span class="comment">//支持POST和GET方法</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">&#x27;/posts&#x27;</span>,[<span class="string">&#x27;as&#x27;</span>=&gt;<span class="string">&#x27;posts&#x27;</span>,<span class="string">&#x27;uses&#x27;</span>=&gt;<span class="string">&#x27;PostController@index&#x27;</span>]);</span><br><span class="line"><span class="comment">//  posts路由，as是给这个路由重命名为posts，这样就可以通过route(&#x27;posts&#x27;,parameter)来访问这个路由,parameter是路由中的参数，可以是数组，uses对应的是默认控制器方法  </span></span><br></pre></td></tr></table></figure></li>
+<li><p>路由参数：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">&#x27;/post&#123;id&#125;&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@index&#x27;</span>);<span class="comment">//传进来参数id</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">index</span>(<span class="params"><span class="variable">$id</span></span>)</span>&#123;</span><br><span class="line">      <span class="comment">//从对应的控制器的方法里接收</span></span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>路由分组：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Route::group([<span class="string">&#x27;prefix&#x27;</span>=&gt;<span class="string">&#x27;post&#x27;</span>],<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	Route::get(<span class="string">&#x27;/&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@index&#x27;</span>);<span class="comment">//对应&#x27;/post&#x27;</span></span><br><span class="line">	Route::post(<span class="string">&#x27;/&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@index&#x27;</span>);<span class="comment">//同上</span></span><br><span class="line">	Route::post(<span class="string">&#x27;/creat&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@index&#x27;</span>);<span class="comment">//对应&#x27;/post/create&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p>url()</p>
+<p><code>url</code> 辅助函数可用于为应用生成任意 URL，并且生成的 URL 会自动使用当前请求的 <code>scheme</code>（HTTP or HTTPS） 和 <code>host</code> 属性</p>
+</li>
+<li><p>asset</p>
+<p>asset()方法用于引入 CSS/JavaScript/images 等文件,文件必须存放在public文件目录下。</p>
+</li>
+</ul>
+<blockquote>
+<h3 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h3></blockquote>
+<ul>
+<li><p>基本与CI相似</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span>(<span class="params"><span class="variable">$value</span>=<span class="string">&#x27;&#x27;</span></span>)</span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">   	<span class="keyword">return</span> view(<span class="string">&quot;post/index&quot;</span>,<span class="variable">$data</span>);<span class="comment">//渲染view/post/index.blade.php文件,$data为数组</span></span><br><span class="line">       <span class="comment">//或者 return view(&quot;post/index&quot;)-&gt;with([&#x27;post&#x27;=&gt;$post]);</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<h3 id="blade模板"><a href="#blade模板" class="headerlink" title="blade模板"></a>blade模板</h3></blockquote>
+<ul>
+<li><p>if语句</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">if</span> (<span class="variable">$bool</span> == <span class="literal">false</span>)</span><br><span class="line">    &lt;h2 <span class="class"><span class="keyword">class</span>=&quot;<span class="title">blog</span>-<span class="title">post</span>-<span class="title">title</span>&quot;&gt;</span>&#123;&#123;<span class="variable">$bool</span>&#125;&#125;&lt;/h2&gt;</span><br><span class="line">@<span class="keyword">elseif</span></span><br><span class="line">	···</span><br><span class="line">@<span class="keyword">else</span></span><br><span class="line">	···</span><br><span class="line">@<span class="keyword">endif</span></span><br></pre></td></tr></table></figure></li>
+<li><p>循环</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">for</span> (<span class="variable">$i</span>=<span class="number">0</span>;<span class="variable">$i</span>&lt;<span class="number">10</span>;<span class="variable">$i</span>++)</span><br><span class="line">     &lt;h2 <span class="class"><span class="keyword">class</span>=&quot;<span class="title">blog</span>-<span class="title">post</span>-<span class="title">title</span>&quot;&gt;</span>&#123;&#123;<span class="variable">$bool</span>&#125;&#125;&lt;/h2&gt;</span><br><span class="line">@<span class="keyword">endfor</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">foreach</span> (<span class="variable">$users</span> <span class="keyword">as</span> <span class="variable">$k</span> =&gt; <span class="variable">$v</span>)</span><br><span class="line">    &lt;p&gt;此用户为 &#123;&#123;<span class="variable">$k</span>.<span class="string">&#x27;--&#x27;</span>.<span class="variable">$v</span>&#125;&#125;&lt;/p&gt;</span><br><span class="line"><span class="comment">//$loop-&gt;iteration  从1开始循环计数  $loop-&gt;index  从0开始计数</span></span><br><span class="line">@<span class="keyword">endforeach</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &lt;p&gt;我永远都在跑循环。&lt;/p&gt;</span><br><span class="line">@<span class="keyword">endwhile</span></span><br></pre></td></tr></table></figure></li>
+<li><p>引用与调用</p>
+<p>将相同的部分全部写出来，将不同的部分用<code> @yield(&#39;content&#39;)</code>代替，然后放在<code>view/layout/main.blade.php</code>下，引用的时候：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">extends</span>(<span class="string">&#x27;layout.main&#x27;</span>)</span><br><span class="line">@section(<span class="string">&#x27;content&#x27;</span>)</span><br><span class="line">	<span class="comment">// code....</span></span><br><span class="line">@endsection</span><br></pre></td></tr></table></figure></li>
+<li><p>渲染为html   <code>&#123;!! $content !!&#125;</code></p>
+</li>
+<li><p>migration</p>
+<ul>
+<li><p>作用：记录对数据库的操作，实现对数据库的迁移</p>
+</li>
+<li><p>在命令行输入<code>php artisan make:migration create_posts_table +(名字，一般命名为creat_表名_table)</code></p>
+</li>
+<li><p>用migration建表：在migration的up（创建函数）里写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Schema::create(<span class="string">&#x27;posts&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">Blueprint <span class="variable">$table</span></span>) </span>&#123;</span><br><span class="line">            <span class="variable">$table</span>-&gt;increments(<span class="string">&#x27;id&#x27;</span>);<span class="comment">//自增id</span></span><br><span class="line">            <span class="variable">$table</span>-&gt;string(<span class="string">&#x27;title&#x27;</span>,<span class="number">100</span>)-&gt;default(<span class="string">&#x27;&#x27;</span>);<span class="comment">//vachar类型的标题，最大长度100</span></span><br><span class="line">            <span class="variable">$table</span>-&gt;text(<span class="string">&#x27;content&#x27;</span>);<span class="comment">//text类型的content</span></span><br><span class="line">            <span class="variable">$table</span>-&gt;integer(<span class="string">&#x27;user_id&#x27;</span>)-&gt;default(<span class="number">0</span>);</span><br><span class="line">            <span class="variable">$table</span>-&gt;timestamps();<span class="comment">//自动创建create_at update_at字段</span></span><br><span class="line">        &#125;);<span class="comment">// 如果想更新，把create换成table</span></span><br></pre></td></tr></table></figure>
+
+<p>设置字段的默认长度在<code>\App\Providers\AppServiceProvider.php </code>的boot里面设置</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</span><br><span class="line">···</span><br><span class="line"><span class="comment">//默认mb4string 类型长度</span></span><br><span class="line">        Schema::defaultStringLength(<span class="number">191</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然后运行 <code>php artisan migrate</code>就会自动建表了</p>
+</li>
+<li><p>回滚</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Schema::dropIfExists(<span class="string">&#x27;posts&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>###文章模型</p>
+</blockquote>
+<ul>
+<li><p>模型使用ORM来创建模型，使用class来表示一个表，每一个表都有一个类来来提供给上层使用，可以通过对模型的查询，增加，删除操作，来对数据表操作，这样就将数据表抽象化</p>
+</li>
+<li><p>创建模型</p>
+<p>在命令行输入以下代码：<code>php artisan make:model Post</code>默认对应表posts</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//默认对应的表=&gt;posts</span></span><br><span class="line"><span class="comment">//指定表名 protected $table = &quot;posts2&quot;;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>默认行为</p>
+<p><code>Eloquent</code> 默认每张表的主键名为<code>id</code>，你可以在模型类中定义一个<code>$primaryKey</code>属性来覆盖该约定。</p>
+<p>此外，<code>Eloquent</code>默认主键字段是自增的整型数据，这意味着主键将会被自动转化为<code>int</code>类型，如果你想要使用非自增或非数字类型主键，必须在对应模型中设置<code>$incrementing</code>属性为<code>false</code>。</p>
+<p>默认情况下，<code>Eloquent</code> 期望<code>created_at</code>和<code>updated_at</code>已经存在于数据表中，如果你不想要这些 <code>Laravel</code> 自动管理的列，在模型类中设置<code>$timestamps</code>属性为<code>false</code></p>
+</li>
+<li><p>在控制器使用模型</p>
+<p><code>$post = \App\Post;</code>由于模型经常使用，可以在控制器上方加<code>use \App\Post;</code>在方法里面可以直接写。返回的是collection对象</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$post</span> = Post::orderBy(<span class="string">&#x27;create_at&#x27;</span>,<span class="string">&#x27;desc&#x27;</span>)-&gt;get();<span class="comment">//获取posts表单额所有数据，并按照时间降序排列   </span></span><br></pre></td></tr></table></figure></li>
+<li><p>模型关联</p>
+<ul>
+<li><p>belongsTo</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Post</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">user</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;belongsTo(<span class="string">&#x27;App\user&#x27;</span>,<span class="string">&#x27;user_id&#x27;</span>,<span class="string">&#x27;id&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此方法会从关联模型(App\user)中，查询此模型(Post)的外键(user_id)为关联模型的主键(id)的数据</p>
+<p>使用： <code>Post::find($id)-&gt;get()[0]-&gt;name</code>用来获取id为$id的文章的user的姓名</p>
+</li>
+<li><p>hasMany</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Member</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">blogs</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;hasMany(<span class="string">&#x27;App\Blog&#x27;</span>,<span class="string">&quot;member_id&quot;</span>,<span class="string">&quot;id&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此方法会从关联模型(App\Blog)中，查找关联模型的外键(member_id)为此模型(Member)的主键(id)的数据</p>
+</li>
+<li><p>belongsTomany</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Member</span> <span class="keyword">extends</span> <span class="title">Model</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">projects</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;belongsToMany(<span class="string">&#x27;App\Project&#x27;</span>,<span class="string">&#x27;member_project&#x27;</span>,<span class="string">&#x27;member_id&#x27;</span>,<span class="string">&#x27;project_id&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此方法会从关联模型(App\Project)cha数据,条件为：先在表(member_project)找到此模型(member)主键为(member_id)数据,找到对应的project_id，然后在project表中找主键为project的数据</p>
+</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/fzaninotto/Faker">数据填充</a></p>
+<p>在<code>database/factories</code>里写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$factory</span>-&gt;define(App\Post::class, <span class="function"><span class="keyword">function</span> (<span class="params">Faker\<span class="built_in">Generator</span> <span class="variable">$faker</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">&#x27;title&#x27;</span> =&gt; <span class="variable">$faker</span>-&gt;sentence(<span class="number">6</span>),<span class="comment">//6个单词</span></span><br><span class="line">        <span class="string">&#x27;content&#x27;</span> =&gt; <span class="variable">$faker</span>-&gt;paragraph(<span class="number">10</span>),<span class="comment">//10句话</span></span><br><span class="line">    ];</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>然后再命令框运行 <code>php artisan tinker</code> -&gt;<code>factory(App\Post::class,20)-&gt;create();</code></p>
+</li>
+<li><p>简单分页</p>
+<p>控制器里写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$post</span> = Post::orderBy(<span class="string">&#x27;create_at&#x27;</span>,<span class="string">&#x27;desc&#x27;</span>)-&gt;paginate(<span class="number">10</span>);<span class="comment">//每页显示的条数</span></span><br><span class="line"><span class="keyword">return</span> view(<span class="string">&quot;post/index&quot;</span>,<span class="keyword">array</span>(<span class="string">&#x27;posts&#x27;</span>=&gt;<span class="variable">$posts</span>,));</span><br></pre></td></tr></table></figure>
+
+<p>blade里写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;<span class="variable">$post</span>-&gt;links()&#125;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>字符截断</p>
+<p>blade页面写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;str_limit(<span class="variable">$post</span>-&gt;content,<span class="number">100</span>,<span class="string">&#x27;...&#x27;</span>)&#125;&#125;<span class="comment">//显示100字符，超出部分显示...</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<h3 id="文章的增删改查"><a href="#文章的增删改查" class="headerlink" title="文章的增删改查"></a>文章的增删改查</h3></blockquote>
+<ul>
+<li><p>文章详情页</p>
+<p>路由时用的是模型绑定:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">&#x27;/posts/&#123;post&#125;&#x27;</span>,<span class="string">&#x27;\App\Http\Controllers\PostController@show&#x27;</span>)-&gt;where([<span class="string">&#x27;post&#x27;</span> =&gt; <span class="string">&#x27;[0-9]+&#x27;</span>]);<span class="comment">//绑定post模型</span></span><br></pre></td></tr></table></figure>
+
+<p>控制器里面写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">Post <span class="variable">$post</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="variable">$data</span>[<span class="string">&#x27;post&#x27;</span>] = <span class="variable">$post</span>;</span><br><span class="line">    	<span class="keyword">return</span> view(<span class="string">&#x27;post/show&#x27;</span>,<span class="variable">$data</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>创建文章</p>
+<ul>
+<li><p>post提交时，必须使用一个函数<code>&#123;&#123;csrf_field()&#125;&#125;</code></p>
+</li>
+<li><p>接收参数<code>request()-&gt;all();</code>或者<code>request([&#39;title&#39;,&#39;content&#39;]);</code>特定字段名</p>
+</li>
+<li><p>使用post的crate方法时，需要在post模型里面添加两个属性</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="variable">$guarded</span> = [];<span class="comment">//不可以注入的字段</span></span><br><span class="line"><span class="keyword">protected</span> <span class="variable">$fillable</span> = [<span class="string">&#x27;title&#x27;</span>,<span class="string">&#x27;content&#x27;</span>];<span class="comment">//可以注入的数据字段</span></span><br></pre></td></tr></table></figure></li>
+<li><p>利用模型存数据库</p>
+<p>Post::create([数组]);//此方法会同时插入created_at 和 upadated_at字段</p>
+</li>
+<li><p>表单验证</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;validate(request(), [</span><br><span class="line">            <span class="string">&#x27;title&#x27;</span>   =&gt; <span class="string">&#x27;required|string|max:100|min:5&#x27;</span>, <span class="comment">//title的验证规则:必填，字符串，长度大于5小于100</span></span><br><span class="line">            <span class="string">&#x27;content&#x27;</span> =&gt; <span class="string">&#x27;required|string|min:10&#x27;</span>,</span><br><span class="line">],[</span><br><span class="line">  <span class="string">&#x27;title.min&#x27;</span> =&gt;<span class="string">&#x27;文章标题过短&#x27;</span>,<span class="comment">//自定义错误提示</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p>返回错误时会可以在前端blade模板中直接写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">if</span>(count(<span class="variable">$errors</span>)&gt;<span class="number">0</span>)</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">alert</span>-<span class="title">danger</span> <span class="title">alert</span>&quot;&gt;</span></span><br><span class="line"><span class="class">  @<span class="title">foreach</span>($<span class="title">errors</span>-&gt;<span class="title">all</span>() <span class="title">as</span> $<span class="title">error</span>)</span></span><br><span class="line"><span class="class">	&lt;<span class="title">li</span>&gt;</span>&#123;&#123;<span class="variable">$error</span>&#125;&#125;&lt;/li&gt;</span><br><span class="line">  @<span class="keyword">endforeach</span></span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">@<span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
+
+<p>如果验证失败后想进行什么操作</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Validator</span>;</span><br><span class="line">·</span><br><span class="line">·</span><br><span class="line">·</span><br><span class="line"><span class="variable">$validator</span> = Validator::make(<span class="variable">$request</span>-&gt;all(),[</span><br><span class="line">    <span class="string">&#x27;title&#x27;</span>   =&gt; <span class="string">&#x27;required|string|max:100|min:5&#x27;</span>, <span class="comment">//title的验证规则:必填，字符串，长度大于5小于100</span></span><br><span class="line">    <span class="string">&#x27;content&#x27;</span> =&gt; <span class="string">&#x27;required|string|min:10&#x27;</span>,</span><br><span class="line">],[</span><br><span class="line">    <span class="string">&#x27;title.min&#x27;</span> =&gt;<span class="string">&#x27;文章标题过短&#x27;</span>,<span class="comment">//自定义错误提示</span></span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果验证失败</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$validator</span>-&gt;fails()) &#123;</span><br><span class="line">    <span class="variable">$request</span>-&gt;session()-&gt;flash(<span class="string">&#x27;tab&#x27;</span>, <span class="string">&#x27;2&#x27;</span>);   <span class="comment">//闪存信息到session</span></span><br><span class="line">    <span class="keyword">return</span> redirect()</span><br><span class="line">        -&gt;back()</span><br><span class="line">        -&gt;withErrors(<span class="variable">$validator</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>*如果显示错误想变成中文，可以<code>resource/lang/</code>下新建一个文件夹<code>/zh</code>，将en下的文件复制到这里面，然后参考<a target="_blank" rel="noopener" href="https://gist.github.com/linkdesu/994b59c8dc6217dd299a">linkdesu</a>写的复制下来，覆盖到validation。然后在<code>config/app.php</code>里面将<code>locale</code>改为<code>zh</code></p>
+<ul>
+<li><p>laravel的表单验证自带重复确认验证confirmed：</p>
+<p>具体用法为：验证字段必须有一个匹配字段<code>foo_confirmation</code>，例如，如果验证字段是<code>password</code>，必须输入一个与之匹配的<code>password_confirmation</code>字段</p>
+</li>
+<li><p>unique:table,column,except,idColumn</p>
+<p>此验证规则会在table表（除去idColumn/主键为except的项）中检查column字段中有没有与之重复的值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;email&#x27;</span> =&gt; <span class="string">&#x27;unique:users,email_address,&#x27;</span>.<span class="variable">$user</span>-&gt;id.<span class="string">&#x27;,user_id&#x27;</span>,</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>修改文章</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span>(<span class="params">Post <span class="variable">$post</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$post</span>-&gt;title = request(<span class="string">&#x27;title&#x27;</span>);</span><br><span class="line">        <span class="variable">$post</span>-&gt;content = request(<span class="string">&#x27;content&#x27;</span>);</span><br><span class="line">        <span class="variable">$post</span>-&gt;save();</span><br><span class="line">        <span class="keyword">return</span> redirect(<span class="string">&quot;posts/<span class="subst">$post</span>-&gt;id&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>删除文章</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">delete</span>(<span class="params">Post <span class="variable">$post</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        post-&gt;delete();</span><br><span class="line">        <span class="keyword">return</span> view(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>###Auth门脸类</p>
+</blockquote>
+<ul>
+<li><p>配置流程</p>
+<ul>
+<li>将所要应用Auth的模型（比如User这个model）继承 Authenticate</li>
+<li>具体在<code>config/auth</code>里面修改</li>
+</ul>
+</li>
+<li><p>方法</p>
+<ul>
+<li><p>登录 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(Auth::attempt([<span class="string">&#x27;email&#x27;</span>=&gt;<span class="variable">$email</span>,<span class="string">&#x27;password&#x27;</span>=&gt;<span class="variable">$password</span>],<span class="variable">$remember</span>))</span><br><span class="line"> &#123;</span><br><span class="line">     <span class="comment">//此数组会和对应模型的数据库进行匹配,匹配正确会进入到此分支语句中</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>登出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Auth::logout();</span><br></pre></td></tr></table></figure></li>
+<li><p>获取当前已通过认证的用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$user = Auth::user()</span><br></pre></td></tr></table></figure></li>
+<li><p>获取当前已认证用户的id</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$id</span> = Auth::id();</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<h3 id="Policy策略类-用于权限验证"><a href="#Policy策略类-用于权限验证" class="headerlink" title="Policy策略类(用于权限验证)"></a>Policy策略类(用于权限验证)</h3></blockquote>
+<ul>
+<li><p>创建</p>
+<p><code>php artisan make:policy Postpolicy</code></p>
+</li>
+<li><p>引入模型，添加方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Post</span>；  //文章</span><br><span class="line"><span class="title">use</span> <span class="title">App</span>\<span class="title">User</span>;	<span class="comment">//用户</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//修改权限</span></span><br><span class="line"><span class="comment">//判断用户的id和文章的id是否相等，相等返回true，不相等返回false</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">update</span>(<span class="params">User <span class="variable">$user</span>,Post <span class="variable">$post</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$user</span>-&gt;id == <span class="variable">$post</span>-&gt;user_id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>将策略类和模型关联起来</p>
+<p>在<code>app/Policies/AuthServiceProvideer.php</code>里</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="variable">$policies</span> = [</span><br><span class="line">       <span class="comment">//&#x27;App\Model&#x27; =&gt; &#x27;App\Policies\ModelPolicy&#x27;,</span></span><br><span class="line">       <span class="string">&#x27;App\Post&#x27;</span> =&gt; <span class="string">&#x27;App\Policies\PostPolicy&#x27;</span>,</span><br><span class="line">   ];</span><br></pre></td></tr></table></figure></li>
+<li><p>策略判断</p>
+<ul>
+<li><p>在要进行权限验证的控制器的方法里写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;authorize(<span class="string">&#x27;update&#x27;</span>,<span class="variable">$post</span>);</span><br></pre></td></tr></table></figure>
+
+<p>此时会获取登录的用户<code>Auth::user()</code>来判断是否有权限，如果通过权限验证会继续，不通过会返回错误页面</p>
+<p>也可以这样：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$user</span>-&gt;can(<span class="string">&#x27;update&#x27;</span>,<span class="variable">$post</span>))&#123;</span><br><span class="line">    ***************</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果有权限更新，会继续进行，否则，会报错</p>
+</li>
+<li><p>在要进行权限验证的blade模板里面写</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@can(<span class="string">&#x27;update&#x27;</span>,<span class="variable">$post</span>)</span><br><span class="line">	*****************</span><br><span class="line">@endcan</span><br></pre></td></tr></table></figure>
+
+<p>此时会获取登录的用户<code>Auth::user()</code>来判断是否有权限</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>修改时区  ：</p>
+<p>在\App\config\app.php  里修改 <code>timezone =&gt;&#39;Aisa/Shanghai&#39;</code> </p>
+<p>修改时间格式：</p>
+<p>$post-&gt;created_at-&gt;toFormattedDateString()</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2018/06/24/laravel-%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/" data-id="ckpnxl9mo000ca8u4f0unasu3" data-title="Laravel 笔记 持续更新" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/" rel="tag">laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动Web开发之rem
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/16/laravel%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%EF%BC%8C%E6%8A%A5%E9%94%99unable-to-guess-the-mime-type-as-no-guessers-are-available/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">laravel上传的图片无法打开，报错Unable to guess the mime type as no guessers are available</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/" rel="tag">CI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array-shift/" rel="tag">array_shift()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">centos，服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmder/" rel="tag">cmder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/" rel="tag">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mount/" rel="tag">mount</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/" rel="tag">mysqldump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem/" rel="tag">rem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" rel="tag">二叉查找树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%BC%A0%E5%8F%82/" rel="tag">二维数组传参</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E5%AE%9A%E5%80%BC/" rel="tag">判断数据库是否有特定值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%A1%86/" rel="tag">命令框</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1/" rel="tag">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" rel="tag">对象数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" rel="tag">希尔排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8E%92%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BD%93/" rel="tag">快排，结构体</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" rel="tag">恢复数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%85%E9%9A%9C/" rel="tag">故障</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA/" rel="tag">数据导出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB/" rel="tag">数据库迁移</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/" rel="tag">无法启动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="tag">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E7%AB%99%E7%82%B9/" rel="tag">虚拟站点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD/" rel="tag">重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD%EF%BC%8Cconst/" rel="tag">重载，const</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" rel="tag">静态成员变量</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CI/" style="font-size: 10px;">CI</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/array-shift/" style="font-size: 10px;">array_shift()</a> <a href="/tags/centos%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">centos，服务器</a> <a href="/tags/cmder/" style="font-size: 10px;">cmder</a> <a href="/tags/dfs/" style="font-size: 15px;">dfs</a> <a href="/tags/laravel/" style="font-size: 20px;">laravel</a> <a href="/tags/mount/" style="font-size: 10px;">mount</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/mysqldump/" style="font-size: 10px;">mysqldump</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" style="font-size: 10px;">二叉查找树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 10px;">二维数组</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%BC%A0%E5%8F%82/" style="font-size: 10px;">二维数组传参</a> <a href="/tags/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E5%AE%9A%E5%80%BC/" style="font-size: 10px;">判断数据库是否有特定值</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E6%A1%86/" style="font-size: 10px;">命令框</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 20px;">图论</a> <a href="/tags/%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">对象</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" style="font-size: 10px;">对象数组</a> <a href="/tags/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">希尔排序</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E6%8E%92%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 10px;">快排，结构体</a> <a href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">恢复数据</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%85%E9%9A%9C/" style="font-size: 10px;">故障</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA/" style="font-size: 10px;">数据导出</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">数据库迁移</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/" style="font-size: 10px;">无法启动</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 10px;">最小生成树</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E7%AB%99%E7%82%B9/" style="font-size: 10px;">虚拟站点</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E8%BD%BD/" style="font-size: 15px;">重载</a> <a href="/tags/%E9%87%8D%E8%BD%BD%EF%BC%8Cconst/" style="font-size: 10px;">重载，const</a> <a href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" style="font-size: 10px;">静态成员变量</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/05/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/27/2020%E5%8C%97%E7%A7%91%E5%A4%A7%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">2020北科大考研复试</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/23/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">IT项目管理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/">迁移数据库文件到另一台服务器</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/">记一次服务器无法启动后，从服务器取出数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
