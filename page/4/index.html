@@ -71,52 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-栈的部分操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2017/10/17/%E6%A0%88%E7%9A%84%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/" class="article-date">
-  <time class="dt-published" datetime="2017-10-17T01:56:14.000Z" itemprop="datePublished">2017-10-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2017/10/17/%E6%A0%88%E7%9A%84%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/">栈的部分操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">“<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="comment">//函数结果状态码</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INFEASIBLE -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OVERFLOW -2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STACK_INIT_SIZE 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STACKINCREMENT</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> elemtype;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">elemtype *top;</span><br><span class="line">elemtype *base;</span><br><span class="line"><span class="keyword">int</span> stacksize;</span><br><span class="line">&#125;Sqstack;</span><br><span class="line"><span class="function">Status <span class="title">InitStack</span><span class="params">(Sqstack *S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">S-&gt;base = (elemtype *)<span class="built_in">malloc</span>(STACK_INIT_SIZE*<span class="keyword">sizeof</span>(elemtype));</span><br><span class="line"><span class="keyword">if</span>(!S-&gt;base) <span class="built_in">exit</span>(OVERFLOW);</span><br><span class="line">S-&gt;top = S-&gt;base;</span><br><span class="line">S-&gt;stacksize = STACK_INIT_SIZE;</span><br><span class="line"><span class="keyword">return</span> OK;</span><br><span class="line">&#125;<span class="comment">//初始化栈</span></span><br><span class="line"><span class="function">Status <span class="title">Stackempty</span><span class="params">(Sqstack *S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(S-&gt;top == S-&gt;base)</span><br><span class="line"><span class="keyword">return</span> TRUE;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">Status <span class="title">Push</span><span class="params">(Sqstack *S,elemtype *e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(S-&gt;top-S-&gt;base&gt;=S-&gt;stacksize)</span><br><span class="line">&#123;</span><br><span class="line">S-&gt;base = (elemtype*)<span class="built_in">realloc</span>(S-&gt;base,(S-&gt;stacksize+STACKINCREMENT)*<span class="keyword">sizeof</span>(elemtype));</span><br><span class="line"><span class="keyword">if</span>(!S-&gt;base) <span class="built_in">exit</span>(OVERFLOW);</span><br><span class="line">S-&gt;top = S-&gt;base + S-&gt;stacksize;</span><br><span class="line">S.stacksize = S.stacksize + STACKINCREMENT;</span><br><span class="line">&#125;</span><br><span class="line">*S-&gt;top++ = e;</span><br><span class="line"><span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">Status <span class="title">Pop</span><span class="params">(Sqstack *S,elemtype *e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(Stackempty(Sqstack *S))</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br><span class="line">e = *–S-&gt;top;</span><br><span class="line"><span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;“</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2017/10/17/%E6%A0%88%E7%9A%84%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/" data-id="ckpnxl9ov003na8u4hc7tff0j" data-title="栈的部分操作" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-sdut-oj-3884-菠萝的成绩单" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2017/09/13/sdut-oj-3884-%E8%8F%A0%E8%90%9D%E7%9A%84%E6%88%90%E7%BB%A9%E5%8D%95/" class="article-date">
@@ -164,7 +118,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/09/13/sdut-oj-3884-%E8%8F%A0%E8%90%9D%E7%9A%84%E6%88%90%E7%BB%A9%E5%8D%95/" data-id="ckpnxl9n50012a8u46qaugp1x" data-title="SDUT OJ    3884-菠萝的成绩单" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/09/13/sdut-oj-3884-%E8%8F%A0%E8%90%9D%E7%9A%84%E6%88%90%E7%BB%A9%E5%8D%95/" data-id="ckpo4q6m70010gku4a2dab29j" data-title="SDUT OJ    3884-菠萝的成绩单" class="article-share-link">Share</a>
       
       
       
@@ -328,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/08/07/php-ci%E7%AC%94%E8%AE%B0/" data-id="ckpnxl9mx000qa8u47ny110sj" data-title="PHP CI笔记" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/08/07/php-ci%E7%AC%94%E8%AE%B0/" data-id="ckpo4q6m0000pgku4d3gydcnx" data-title="PHP CI笔记" class="article-share-link">Share</a>
       
       
       
@@ -372,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/08/06/htmlcss/" data-id="ckpnxl9mj0007a8u4gj537u8v" data-title="HTML&amp;&amp;CSS" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/08/06/htmlcss/" data-id="ckpo4q6ln0006gku4hitza1wn" data-title="HTML&amp;&amp;CSS" class="article-share-link">Share</a>
       
       
       
@@ -414,7 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/08/05/%E9%A6%96%E9%A1%B5/" data-id="ckpnxl9p20046a8u48arz41r7" data-title="首页" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/08/05/%E9%A6%96%E9%A1%B5/" data-id="ckpo4q6ns003agku47fpc3t38" data-title="首页" class="article-share-link">Share</a>
       
       
       
@@ -441,7 +395,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li></ul>
     </div>
   </div>
 
@@ -470,7 +424,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
     </div>
   </div>
 
@@ -487,10 +441,6 @@
           </li>
         
           <li>
-            <a href="/2020/05/27/2020%E5%8C%97%E7%A7%91%E5%A4%A7%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">2020北科大考研复试</a>
-          </li>
-        
-          <li>
             <a href="/2019/05/23/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">IT项目管理</a>
           </li>
         
@@ -500,6 +450,10 @@
         
           <li>
             <a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/">记一次服务器无法启动后，从服务器取出数据</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/">移动Web开发之rem</a>
           </li>
         
       </ul>

@@ -13,17 +13,17 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="修改apache&#x2F;conf下的httpd.config文件 在220行左右，修改Directory标签，此为修改权限。 1234&lt;Directory&#x2F;&gt; AllowOverride All Require all denied&lt;&#x2F;Directory&gt;  如图所示：  在498行左右，修改Virtual hosts，去掉下面那句话的注释 12# Virtual hostsI">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://www.huhuapin.cn/wp-content/uploads/2018/03/0.jpg">
-<meta property="og:image" content="http://www.huhuapin.cn/wp-content/uploads/2018/03/1.jpg">
-<meta property="og:image" content="http://www.huhuapin.cn/wp-content/uploads/2018/03/3.jpg">
-<meta property="og:image" content="http://www.huhuapin.cn/wp-content/uploads/2018/03/4.jpg">
+<meta property="og:image" content="http://static.huhuapin.cn/uploads/2018/03/0.jpg">
+<meta property="og:image" content="http://static.huhuapin.cn/uploads/2018/03/1.jpg">
+<meta property="og:image" content="http://static.huhuapin.cn/uploads/2018/03/3.jpg">
+<meta property="og:image" content="http://static.huhuapin.cn/uploads/2018/03/4.jpg">
 <meta property="article:published_time" content="2018-03-07T12:14:46.000Z">
-<meta property="article:modified_time" content="2021-06-05T02:14:15.193Z">
+<meta property="article:modified_time" content="2021-06-08T14:16:33.488Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="apache">
 <meta property="article:tag" content="虚拟站点">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.huhuapin.cn/wp-content/uploads/2018/03/0.jpg">
+<meta name="twitter:image" content="http://static.huhuapin.cn/uploads/2018/03/0.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -111,24 +111,24 @@
 <p>在220行左右，修改Directory标签，此为修改权限。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory/&gt;</span><br><span class="line"> AllowOverride All</span><br><span class="line"> Require all denied</span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
 
-<p>如图所示： <img src="http://www.huhuapin.cn/wp-content/uploads/2018/03/0.jpg"> 在498行左右，修改Virtual hosts，去掉下面那句话的注释</p>
+<p>如图所示： <img src="http://static.huhuapin.cn/uploads/2018/03/0.jpg"> 在498行左右，修改Virtual hosts，去掉下面那句话的注释</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Virtual hosts</span><br><span class="line">Include conf/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure>
 
-<p>如图所示： <img src="http://www.huhuapin.cn/wp-content/uploads/2018/03/1.jpg"></p>
+<p>如图所示： <img src="http://static.huhuapin.cn/uploads/2018/03/1.jpg"></p>
 <blockquote>
 <h4 id="修改apache-conf-extra下的httpd-vhosts文件"><a href="#修改apache-conf-extra下的httpd-vhosts文件" class="headerlink" title="修改apache/conf/extra下的httpd-vhosts文件"></a>修改apache/conf/extra下的httpd-vhosts文件</h4></blockquote>
 <p>如果以前可以访问的前缀是 <code>www</code> ，在文件末尾先加上以下代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line"> ServerName www.huhuapin.cn</span><br><span class="line"> DocumentRoot &quot;/data/wwwroot/wordpress&quot;</span><br><span class="line"> &lt;Directory /&gt; </span><br><span class="line"> Options FollowSymLinks </span><br><span class="line"> AllowOverride All </span><br><span class="line"> Order allow,deny </span><br><span class="line"> Allow from all </span><br><span class="line"> &lt;/Directory&gt; </span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
 
-<p>如图所示 <img src="http://www.huhuapin.cn/wp-content/uploads/2018/03/3.jpg"> 然后在其下面添加你所想配置的虚拟站点</p>
+<p>如图所示 <img src="http://static.huhuapin.cn/uploads/2018/03/3.jpg"> 然后在其下面添加你所想配置的虚拟站点</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line"> ServerAdmin admin@example.com</span><br><span class="line"> DocumentRoot &quot;/data/wwwroot/test.huhuapin.cn&quot;</span><br><span class="line"> ServerName test.huhuapin.cn</span><br><span class="line"> ErrorLog &quot;/data/wwwlogs/test.huhuapin.cn_error_apache.log&quot;</span><br><span class="line"> CustomLog &quot;/data/wwwlogs/test.huhuapin.cn_apache.log&quot; common</span><br><span class="line">&lt;Directory &quot;/data/wwwroot/test.huhuapin.cn&quot;&gt;</span><br><span class="line"> SetOutputFilter DEFLATE</span><br><span class="line"> Options FollowSymLinks ExecCGI</span><br><span class="line"> Require all granted</span><br><span class="line"> AllowOverride All</span><br><span class="line"> Order allow,deny</span><br><span class="line"> Allow from all</span><br><span class="line"> DirectoryIndex index.html index.php</span><br><span class="line">&lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
 
-<p>如图所示： <img src="http://www.huhuapin.cn/wp-content/uploads/2018/03/4.jpg"> 重启apache，然后就大功告成了</p>
+<p>如图所示： <img src="http://static.huhuapin.cn/uploads/2018/03/4.jpg"> 重启apache，然后就大功告成了</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2018/03/07/centos%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fapache%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E7%AB%99%E7%82%B9/" data-id="ckpnxl9mc0002a8u4evedbemm" data-title="centos操作系统apache服务器添加虚拟站点" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2018/03/07/centos%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9Fapache%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B7%BB%E5%8A%A0%E8%99%9A%E6%8B%9F%E7%AB%99%E7%82%B9/" data-id="ckpo4q6lg0003gku49585ci14" data-title="centos操作系统apache服务器添加虚拟站点" class="article-share-link">Share</a>
       
       
       
@@ -169,7 +169,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li></ul>
     </div>
   </div>
 
@@ -198,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
     </div>
   </div>
 
@@ -215,10 +215,6 @@
           </li>
         
           <li>
-            <a href="/2020/05/27/2020%E5%8C%97%E7%A7%91%E5%A4%A7%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">2020北科大考研复试</a>
-          </li>
-        
-          <li>
             <a href="/2019/05/23/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">IT项目管理</a>
           </li>
         
@@ -228,6 +224,10 @@
         
           <li>
             <a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/">记一次服务器无法启动后，从服务器取出数据</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/">移动Web开发之rem</a>
           </li>
         
       </ul>

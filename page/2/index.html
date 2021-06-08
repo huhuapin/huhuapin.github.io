@@ -71,49 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-linux操作系统下，重装mysql数据库（升级mysql版本）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2018/02/08/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8C%E9%87%8D%E8%A3%85mysql%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%8D%87%E7%BA%A7mysql%E7%89%88%E6%9C%AC%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2018-02-08T12:51:25.000Z" itemprop="datePublished">2018-02-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/uncategorized/">uncategorized</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2018/02/08/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8C%E9%87%8D%E8%A3%85mysql%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%8D%87%E7%BA%A7mysql%E7%89%88%E6%9C%AC%EF%BC%89/">Linux操作系统下，重装mysql数据库（升级MYSQL版本）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>重装的时候，先把<code>/data/</code>文件夹下的<code>mysql</code>文件夹tar压缩备份一遍，卸载掉之后，安装完新的数据库 如果mysql数据库服务正在运行，则先让它停止，然后把备份的mysql复制覆盖新的mysql文件夹，然后改拥有者用户为_mysql_ ，这样就能保留原数据了</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2018/02/08/linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8C%E9%87%8D%E8%A3%85mysql%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E5%8D%87%E7%BA%A7mysql%E7%89%88%E6%9C%AC%EF%BC%89/" data-id="ckpnxl9mw000na8u441wtc668" data-title="Linux操作系统下，重装mysql数据库（升级MYSQL版本）" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-jiestyle-two-master" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2018/02/07/jiestyle-two-master/" class="article-date">
@@ -145,7 +102,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2018/02/07/jiestyle-two-master/" data-id="ckpnxl9mf0004a8u40i7w3t2z" data-title="JieStyle-Two-master" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2018/02/07/jiestyle-two-master/" data-id="ckpo4q6lq0009gku4d5bhglvh" data-title="JieStyle-Two-master" class="article-share-link">Share</a>
       
       
       
@@ -186,7 +143,7 @@
         <p>在做一项目时，用到经纬度坐标，经过多次百度，找到了geometry这个字段，用这个字段，MYSQL提供了很方便的函数，比如查询两个点之间的距离，查询距离这个点多少米的所有点，查询距离这个点最近的几个点，然后用laravel写了几个功能。 参考链接：<a target="_blank" rel="noopener" href="http://blog.csdn.net/MinjerZhang/article/details/78137795">mysql中geometry类型的简单使用</a> （主） <a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_7c05385f0101eofb.html">查找1附近点–Geohash方案讨论</a></p>
 <blockquote>
 <h4 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h4></blockquote>
-<p>表test <img src="http://www.huhuapin.cn/wp-content/uploads/2018/02/QQ%E6%88%AA%E5%9B%BE20180207124847.jpg"> 表point <img src="http://www.huhuapin.cn/wp-content/uploads/2018/02/QQ%E6%88%AA%E5%9B%BE20180207124927.jpg"> 其中，gis的类型是geometry类型的，用来储存经纬度，geohash是利用gis经过哈希算法得到的字符串，利用此字符串比较效率更高，具体见文章顶部连接，它的结构如下： <img src="http://www.huhuapin.cn/wp-content/uploads/2018/02/QQ%E6%88%AA%E5%9B%BE20180207124952.jpg"></p>
+<p>表test <img src="http://static.huhuapin.cn/uploads/2018/02/QQ%E6%88%AA%E5%9B%BE20180207124847.jpg"> 表point <img src="http://static.huhuapin.cn/uploads/2018/02/QQ%E6%88%AA%E5%9B%BE20180207124927.jpg"> 其中，gis的类型是geometry类型的，用来储存经纬度，geohash是利用gis经过哈希算法得到的字符串，利用此字符串比较效率更高，具体见文章顶部连接，它的结构如下： <img src="http://static.huhuapin.cn/uploads/2018/02/QQ%E6%88%AA%E5%9B%BE20180207124952.jpg"></p>
 <blockquote>
 <h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4></blockquote>
 <p>此处只说laravel的插入方法，具体sql命令详见文章顶链接</p>
@@ -231,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2018/02/07/mysql%E5%88%A9%E7%94%A8geometry%E5%AD%97%E6%AE%B5%E5%9C%A8laravel%E6%A1%86%E6%9E%B6%E4%B8%8B%EF%BC%8C%E6%9D%A5%E5%AE%8C%E6%88%90%E7%A9%BA%E9%97%B4%E7%B1%BB%E6%9F%A5%E8%AF%A2/" data-id="ckpnxl9ms000ka8u49c065mxr" data-title="mysql利用geometry字段在laravel框架下，来完成空间类查询" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2018/02/07/mysql%E5%88%A9%E7%94%A8geometry%E5%AD%97%E6%AE%B5%E5%9C%A8laravel%E6%A1%86%E6%9E%B6%E4%B8%8B%EF%BC%8C%E6%9D%A5%E5%AE%8C%E6%88%90%E7%A9%BA%E9%97%B4%E7%B1%BB%E6%9F%A5%E8%AF%A2/" data-id="ckpo4q6lx000jgku4hodoecfr" data-title="mysql利用geometry字段在laravel框架下，来完成空间类查询" class="article-share-link">Share</a>
       
       
       
@@ -299,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2018/02/06/php%E5%A6%82%E4%BD%95%E5%9C%A8%E5%88%A0%E9%99%A4%E6%95%B0%E5%80%BC%E5%9E%8B%E9%94%AE%E5%90%8D%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E5%90%8E%EF%BC%8C%E4%B8%8D/" data-id="ckpnxl9n2000va8u40flv3xyv" data-title="php如何在删除数值型键名数组的第一个元素后，不改变其键名" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2018/02/06/php%E5%A6%82%E4%BD%95%E5%9C%A8%E5%88%A0%E9%99%A4%E6%95%B0%E5%80%BC%E5%9E%8B%E9%94%AE%E5%90%8D%E6%95%B0%E7%BB%84%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E5%90%8E%EF%BC%8C%E4%B8%8D/" data-id="ckpo4q6lz000ngku453qv2bd2" data-title="php如何在删除数值型键名数组的第一个元素后，不改变其键名" class="article-share-link">Share</a>
       
       
       
@@ -355,10 +312,10 @@
 
 <blockquote>
 <h3 id="添加到环境变量"><a href="#添加到环境变量" class="headerlink" title="添加到环境变量"></a>添加到环境变量</h3></blockquote>
-<p>右键此电脑-&gt;属性-&gt;高级系统设置-&gt;环境变量-&gt;编辑-&gt;浏览。选中cmder.exe所在的文件夹 <img src="http://www.huhuapin.cn/wp-content/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129170037.jpg"> <img src="http://www.huhuapin.cn/wp-content/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129170103.jpg"> <img src="http://www.huhuapin.cn/wp-content/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129194959.jpg"></p>
+<p>右键此电脑-&gt;属性-&gt;高级系统设置-&gt;环境变量-&gt;编辑-&gt;浏览。选中cmder.exe所在的文件夹 <img src="http://static.huhuapin.cn/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129170037.jpg"> <img src="http://static.huhuapin.cn/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129170103.jpg"> <img src="http://static.huhuapin.cn/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129194959.jpg"></p>
 <blockquote>
 <h3 id="添加到右键菜单"><a href="#添加到右键菜单" class="headerlink" title="添加到右键菜单"></a>添加到右键菜单</h3></blockquote>
-<p>如果用cmd，cmd管理员命令下，进入cmder.exe所在目录，输入<code>Cmder.exe /REGISTER ALL</code> 如下： <img src="http://www.huhuapin.cn/wp-content/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129165309.jpg"> 如果用windows powershell，windows powershell管理员下，进入cmder.exe所在目录，输入<code>.\Cmder.exe /REGISTER ALL</code> <img src="http://www.huhuapin.cn/wp-content/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129165416.jpg"></p>
+<p>如果用cmd，cmd管理员命令下，进入cmder.exe所在目录，输入<code>Cmder.exe /REGISTER ALL</code> 如下： <img src="http://static.huhuapin.cn/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129165309.jpg"> 如果用windows powershell，windows powershell管理员下，进入cmder.exe所在目录，输入<code>.\Cmder.exe /REGISTER ALL</code> <img src="http://static.huhuapin.cn/uploads/2018/01/QQ%E6%88%AA%E5%9B%BE20180129165416.jpg"></p>
 <blockquote>
 <h3 id="显示中文"><a href="#显示中文" class="headerlink" title="显示中文"></a>显示中文</h3></blockquote>
 <p>win+alt+p打开Settings Settings –&gt; Startup –&gt; Environment，添加：<code>set LANG=zh_CN.UTF8</code>，重启cmder 这样ls可以正确显示中文，但ls more还是会出现乱码。 改为<code>set LANG=zh_CN.GBK</code>可以解决这个问题。</p>
@@ -366,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2018/01/29/windows%E4%B8%8B%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E6%A1%86%EF%BC%9Acmder/" data-id="ckpnxl9ov003pa8u40bqvbius" data-title="windows下好用的命令框：cmder" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2018/01/29/windows%E4%B8%8B%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E6%A1%86%EF%BC%9Acmder/" data-id="ckpo4q6ng002sgku4e9xo77je" data-title="windows下好用的命令框：cmder" class="article-share-link">Share</a>
       
       
       
@@ -423,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/28/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%8E%92%E5%BA%8F%E4%BA%94%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%B1%82%E9%80%86%E5%BA%8F%E6%95%B0/" data-id="ckpnxl9no001sa8u4a7yigtzv" data-title="SDUT OJ 数据结构实验之排序五：归并求逆序数" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/28/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%8E%92%E5%BA%8F%E4%BA%94%EF%BC%9A%E5%BD%92%E5%B9%B6%E6%B1%82%E9%80%86%E5%BA%8F%E6%95%B0/" data-id="ckpo4q6n8002hgku433u99j0c" data-title="SDUT OJ 数据结构实验之排序五：归并求逆序数" class="article-share-link">Share</a>
       
       
       
@@ -473,12 +430,12 @@
 
 <h2 id="自动升级时，由于权限问题升级失败"><a href="#自动升级时，由于权限问题升级失败" class="headerlink" title="自动升级时，由于权限问题升级失败"></a>自动升级时，由于权限问题升级失败</h2><p>博主用的oneinstack集成安装的lamp，所以权限分配有些问题。大家可能出现这种情况</p>
 <p><img src="http://localhost/wordpress/wp-content/uploads/2017/12/789-2-300x109.png" alt="img"><br>这是由于权限不够，网上有教程说把涉及到的文件和文件夹权限改成777即，所有用户都可以读、写、执行。这样可能有安全方面的问题。其实，文件夹的权限给到755就足够了，但是为什么还是权限不够呢？<br>这是因为wordpress安装的时候，文件所有者是root，而网站执行操作的是www，所以这里只需要把对应的wordpress文件夹及其子文件夹的所有者改为www就可以啦</p>
-<p> <strong>打开终端命令，在worpress上级文件夹内写<code>chmod -R 755 wordpress</code> 最后一个替换成自己要改的文件夹名就可以啦</strong> <img src="http://www.huhuapin.cn/wp-content/uploads/2017/12/QQ%E6%88%AA%E5%9B%BE20171226204211-300x69.jpg"></p>
+<p> <strong>打开终端命令，在worpress上级文件夹内写<code>chmod -R 755 wordpress</code> 最后一个替换成自己要改的文件夹名就可以啦</strong> <img src="http://static.huhuapin.cn/uploads/2017/12/QQ%E6%88%AA%E5%9B%BE20171226204211-300x69.jpg"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/26/wordpress%E8%87%AA%E5%8A%A8%E5%8D%87%E7%BA%A7%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%AD%A3%E5%9C%A8%E6%9B%B4%E6%96%B0%E5%92%8C%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" data-id="ckpnxl9ow003qa8u42f78724w" data-title="wordpress自动升级遇到的问题，正在更新和文件权限问题" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/26/wordpress%E8%87%AA%E5%8A%A8%E5%8D%87%E7%BA%A7%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%AD%A3%E5%9C%A8%E6%9B%B4%E6%96%B0%E5%92%8C%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" data-id="ckpo4q6nj002vgku4bh3f055h" data-title="wordpress自动升级遇到的问题，正在更新和文件权限问题" class="article-share-link">Share</a>
       
       
       
@@ -535,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/22/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91%E4%BA%8C%EF%BC%9A%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckpnxl9nc001ga8u4gzngff4k" data-title="SDUT OJ 数据结构实验之二叉树二：遍历二叉树" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/22/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E4%BA%8C%E5%8F%89%E6%A0%91%E4%BA%8C%EF%BC%9A%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="ckpo4q6my0028gku4hjmf5eoq" data-title="SDUT OJ 数据结构实验之二叉树二：遍历二叉树" class="article-share-link">Share</a>
       
       
       
@@ -584,7 +541,7 @@
 <h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>5 4 3 2 1 10 9 8 7 6<br>1 2 3 4 5 6 7 8 9 10<br>-22 9 7 -11 37 -5 99 288 33 66<br>-22 -11 -5 7 9 33 37 66 99 288</p>
 <blockquote>
 <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
-<p><img src="file://C:\Users\hasee\Desktop\b3fb43166d224f4a87a8c9380af790529822d1ec.jpg?lastModify=1513843450"><img src="http://www.huhuapin.cn/wp-content/uploads/2017/12/b3fb43166d224f4a87a8c9380af790529822d1ec-300x272.jpg"> 以dk长度分组，分成dk行。每行的相邻元素下标相差dk。一般第k次希尔排序dk为n/(2^k). 从第一行的第二列开始遍历即初始化i为dk，每次与前面一列的元素作比较即a[i]和a[i-dk]比较，如上图第一趟排序让i=dk=5开始，13和49比较。 如果a[i]&lt;a[i-dk],则将这一行a[i]之前的部分进行插入排序。排完序之后让i++移向下一行。 当排序完最后一行，即i==2*dk-1时，会从下一列的第一行开始。如图中第二趟排序，比较完a[5] = 49后i指向a[6] = 38，再将a[6]和前面一列的元素a[3] = 35比较。所以会将所有元素都排序完。</p>
+<p><img src="file://C:\Users\hasee\Desktop\b3fb43166d224f4a87a8c9380af790529822d1ec.jpg?lastModify=1513843450"><img src="http://static.huhuapin.cn/uploads/2017/12/b3fb43166d224f4a87a8c9380af790529822d1ec-300x272.jpg"> 以dk长度分组，分成dk行。每行的相邻元素下标相差dk。一般第k次希尔排序dk为n/(2^k). 从第一行的第二列开始遍历即初始化i为dk，每次与前面一列的元素作比较即a[i]和a[i-dk]比较，如上图第一趟排序让i=dk=5开始，13和49比较。 如果a[i]&lt;a[i-dk],则将这一行a[i]之前的部分进行插入排序。排完序之后让i++移向下一行。 当排序完最后一行，即i==2*dk-1时，会从下一列的第一行开始。如图中第二趟排序，比较完a[5] = 49后i指向a[6] = 38，再将a[6]和前面一列的元素a[3] = 35比较。所以会将所有元素都排序完。</p>
 <blockquote>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
 <p>#include<iostream><br>#include<cstring><br>​<br>using namespace std;<br>int a[10010];<br>void Shell(int dk,int n)//希尔排序<br>{<br> int k,j,i;<br> for(i=dk;i&lt;n;i++)//i从第二列的第一行开始，比较完i++移向下一列<br> {<br> if(a[i-dk]&gt;a[i])//a[i]小于前一列的元素，进行插入排序<br> {<br> k = a[i];<br> for(j=i-dk;j&gt;=0&amp;&amp;a[j]&gt;k;j=j-dk)<br> {<br> a[j+dk] = a[j];<br> }<br> a[j+dk] = k;<br> }<br> }<br>}<br>void Print(int a[],int n)<br>{<br> for(int i=0;i&lt;n;i++)<br> {<br> if(i==n-1)<br> cout&lt;&lt;a[i]&lt;&lt;endl;<br> else<br> cout&lt;&lt;a[i]&lt;&lt;” “;<br> }<br>}<br>int main()<br>{<br> int n,dk;<br> while(cin&gt;&gt;n)<br> {<br> for(int i=0;i&lt;n;i++)<br> {<br> cin&gt;&gt;a[i];<br> }<br> for(dk = n/2;dk&gt;=1;dk = dk/2)<br> {<br> Shell(dk,n);<br> if(dk==n/2dk==1)<br> Print(a,n);<br> }<br> }<br>}<br>​</p>
@@ -592,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/21/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%8E%92%E5%BA%8F%E5%85%AD%EF%BC%9A%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" data-id="ckpnxl9ns001xa8u42wti4pvt" data-title="SDUT OJ 数据结构实验之排序六：希尔排序" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/21/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%8E%92%E5%BA%8F%E5%85%AD%EF%BC%9A%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" data-id="ckpo4q6n6002fgku46rfb364e" data-title="SDUT OJ 数据结构实验之排序六：希尔排序" class="article-share-link">Share</a>
       
       
       
@@ -649,11 +606,68 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/19/sdut-oj-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8A%E6%9C%BA%E7%BB%83%E4%B9%A0%E5%8D%81%E4%B8%80%EF%BC%88%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%89/" data-id="ckpnxl9ox003ra8u44ki47ab4" data-title="SDUT OJ 面向对象程序设计上机练习十一（运算符重载）（数组传递法）" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/19/sdut-oj-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8A%E6%9C%BA%E7%BB%83%E4%B9%A0%E5%8D%81%E4%B8%80%EF%BC%88%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%EF%BC%89/" data-id="ckpo4q6nf002pgku40x2ebnu5" data-title="SDUT OJ 面向对象程序设计上机练习十一（运算符重载）（数组传递法）" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%BC%A0%E5%8F%82/" rel="tag">二维数组传参</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD/" rel="tag">重载</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-sdut-oj-数据结构实验之查找一：二叉排序树（待完善）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2017-12-19T13:09:09.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/">SDUT OJ 数据结构实验之查找一：二叉排序树（待完善）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
+<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>对应给定的一个序列可以唯一确定一棵二叉排序树。然而，一棵给定的二叉排序树却可以由多种不同的序列得到。例如分别按照序列{3,1,4}和{3,4,1}插入初始为空的二叉排序树，都得到一样的结果。你的任务书对于输入的各种序列，判断它们是否能生成一样的二叉排序树。</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>输入包含若干组测试数据。每组数据的第1行给出两个正整数N (n &lt; = 10)和L，分别是输入序列的元素个数和需要比较的序列个数。第2行给出N个以空格分隔的正整数，作为初始插入序列生成一颗二叉排序树。随后L行，每行给出N个元素，属于L个需要检查的序列。简单起见，我们保证每个插入序列都是1到N的一个排列。当读到N为0时，标志输入结束，这组数据不要处理。</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>对每一组需要检查的序列，如果其生成的二叉排序树跟初始序列生成的二叉排序树一样，则输出”Yes”，否则输出”No”。</p>
+<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>4 2<br>3 1 4 2<br>3 4 1 2<br>3 2 4 1<br>2 1<br>2 1<br>1 2<br>0</p>
+<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>Yes<br>No<br>No</p>
+<blockquote>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
+<p>待完善</p>
+<blockquote>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
+<p>#include <iostream><br>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include<algorithm><br>typedef struct node<br>{<br> int data;<br> node* lchild;<br> node* rchild;<br>} Btree,*Qtree;<br> int flag;<br>using namespace std;<br>Qtree Create(Qtree root,int p)<br>{<br> if(root==NULL)<br> {<br> root = (Qtree)malloc(sizeof(Btree));<br> root-&gt;lchild = NULL;<br> root-&gt;rchild = NULL;<br> root-&gt;data = p;<br> }<br> else<br> {<br> if(p &lt; root-&gt;data)<br> {<br> root-&gt;lchild = Create(root-&gt;lchild, p);<br> }<br> else<br> {<br> root-&gt;rchild= Create(root-&gt;rchild,p);<br> }<br> }<br> return root;<br>​<br>}<br>void judge(Qtree root1,Qtree root2)<br>{<br> if(flag == 0)<br> return ;<br> if(root1&amp;&amp;root2)<br> {<br> if(root1-&gt;data == root2-&gt;data)<br> {<br> judge(root1-&gt;lchild,root2-&gt;lchild);<br> judge(root1-&gt;rchild,root2-&gt;rchild);<br> }<br> else<br> {<br> flag = 0;<br> return ;<br> }<br> }<br> else if((!root1)&amp;&amp;(!root2))<br> {<br> return;<br> }<br> else<br> {<br> flag = 0;<br> return ;<br> }<br>}<br>int main()<br>{<br> int n,m,x;<br> while(cin&gt;&gt;n, n)<br> {<br> cin&gt;&gt;m;<br> Qtree root1;<br> root1=NULL;<br> for(int i=0; i&lt;n; i++)<br> {<br> cin&gt;&gt;x;<br> root1 =  Create(root1,x);<br> }<br> while(m--)<br> {<br> Qtree root2;<br> root2 = NULL;<br> for(int i=0; i&lt;n; i++)<br> {<br> cin&gt;&gt;x;<br> root2 = Create(root2,x);<br> }<br> flag =1;<br> judge(root1,root2);<br> if(flag==0)<br> cout&lt;&lt;”No”&lt;&lt;endl;<br> else<br> cout&lt;&lt;”Yes”&lt;&lt;endl;<br> }<br>​<br> }<br>}<br>​</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/" data-id="ckpo4q6nb002mgku4co5ohwh5" data-title="SDUT OJ 数据结构实验之查找一：二叉排序树（待完善）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" rel="tag">二叉查找树</a></li></ul>
 
     </footer>
   </div>
@@ -678,7 +692,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li></ul>
     </div>
   </div>
 
@@ -707,7 +721,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
     </div>
   </div>
 
@@ -724,10 +738,6 @@
           </li>
         
           <li>
-            <a href="/2020/05/27/2020%E5%8C%97%E7%A7%91%E5%A4%A7%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">2020北科大考研复试</a>
-          </li>
-        
-          <li>
             <a href="/2019/05/23/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">IT项目管理</a>
           </li>
         
@@ -737,6 +747,10 @@
         
           <li>
             <a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/">记一次服务器无法启动后，从服务器取出数据</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/">移动Web开发之rem</a>
           </li>
         
       </ul>

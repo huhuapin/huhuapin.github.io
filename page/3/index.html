@@ -71,63 +71,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-sdut-oj-数据结构实验之查找一：二叉排序树（待完善）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2017-12-19T13:09:09.000Z" itemprop="datePublished">2017-12-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/">SDUT OJ 数据结构实验之查找一：二叉排序树（待完善）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3></blockquote>
-<h4 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h4><p>对应给定的一个序列可以唯一确定一棵二叉排序树。然而，一棵给定的二叉排序树却可以由多种不同的序列得到。例如分别按照序列{3,1,4}和{3,4,1}插入初始为空的二叉排序树，都得到一样的结果。你的任务书对于输入的各种序列，判断它们是否能生成一样的二叉排序树。</p>
-<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>输入包含若干组测试数据。每组数据的第1行给出两个正整数N (n &lt; = 10)和L，分别是输入序列的元素个数和需要比较的序列个数。第2行给出N个以空格分隔的正整数，作为初始插入序列生成一颗二叉排序树。随后L行，每行给出N个元素，属于L个需要检查的序列。简单起见，我们保证每个插入序列都是1到N的一个排列。当读到N为0时，标志输入结束，这组数据不要处理。</p>
-<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>对每一组需要检查的序列，如果其生成的二叉排序树跟初始序列生成的二叉排序树一样，则输出”Yes”，否则输出”No”。</p>
-<h4 id="Example-Input"><a href="#Example-Input" class="headerlink" title="Example Input"></a>Example Input</h4><p>4 2<br>3 1 4 2<br>3 4 1 2<br>3 2 4 1<br>2 1<br>2 1<br>1 2<br>0</p>
-<h4 id="Example-Output"><a href="#Example-Output" class="headerlink" title="Example Output"></a>Example Output</h4><p>Yes<br>No<br>No</p>
-<blockquote>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3></blockquote>
-<p>待完善</p>
-<blockquote>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3></blockquote>
-<p>#include <iostream><br>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include<algorithm><br>typedef struct node<br>{<br> int data;<br> node* lchild;<br> node* rchild;<br>} Btree,*Qtree;<br> int flag;<br>using namespace std;<br>Qtree Create(Qtree root,int p)<br>{<br> if(root==NULL)<br> {<br> root = (Qtree)malloc(sizeof(Btree));<br> root-&gt;lchild = NULL;<br> root-&gt;rchild = NULL;<br> root-&gt;data = p;<br> }<br> else<br> {<br> if(p &lt; root-&gt;data)<br> {<br> root-&gt;lchild = Create(root-&gt;lchild, p);<br> }<br> else<br> {<br> root-&gt;rchild= Create(root-&gt;rchild,p);<br> }<br> }<br> return root;<br>​<br>}<br>void judge(Qtree root1,Qtree root2)<br>{<br> if(flag == 0)<br> return ;<br> if(root1&amp;&amp;root2)<br> {<br> if(root1-&gt;data == root2-&gt;data)<br> {<br> judge(root1-&gt;lchild,root2-&gt;lchild);<br> judge(root1-&gt;rchild,root2-&gt;rchild);<br> }<br> else<br> {<br> flag = 0;<br> return ;<br> }<br> }<br> else if((!root1)&amp;&amp;(!root2))<br> {<br> return;<br> }<br> else<br> {<br> flag = 0;<br> return ;<br> }<br>}<br>int main()<br>{<br> int n,m,x;<br> while(cin&gt;&gt;n, n)<br> {<br> cin&gt;&gt;m;<br> Qtree root1;<br> root1=NULL;<br> for(int i=0; i&lt;n; i++)<br> {<br> cin&gt;&gt;x;<br> root1 =  Create(root1,x);<br> }<br> while(m--)<br> {<br> Qtree root2;<br> root2 = NULL;<br> for(int i=0; i&lt;n; i++)<br> {<br> cin&gt;&gt;x;<br> root2 = Create(root2,x);<br> }<br> flag =1;<br> judge(root1,root2);<br> if(flag==0)<br> cout&lt;&lt;”No”&lt;&lt;endl;<br> else<br> cout&lt;&lt;”Yes”&lt;&lt;endl;<br> }<br>​<br> }<br>}<br>​</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/19/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E6%9F%A5%E6%89%BE%E4%B8%80%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91%EF%BC%88%E5%BE%85%E5%AE%8C%E5%96%84%EF%BC%89/" data-id="ckpnxl9ou003ma8u46kjwhw04" data-title="SDUT OJ 数据结构实验之查找一：二叉排序树（待完善）" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" rel="tag">二叉查找树</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-sdut-oj-4-2-电子时钟中的运算符重载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2017/12/17/sdut-oj-4-2-%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F%E4%B8%AD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
@@ -172,7 +115,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/17/sdut-oj-4-2-%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F%E4%B8%AD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="ckpnxl9n80018a8u41jcb4kx8" data-title="SDUT OJ 4-2 电子时钟中的运算符重载" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/17/sdut-oj-4-2-%E7%94%B5%E5%AD%90%E6%97%B6%E9%92%9F%E4%B8%AD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="ckpo4q6mv0025gku40bifaebi" data-title="SDUT OJ 4-2 电子时钟中的运算符重载" class="article-share-link">Share</a>
       
       
       
@@ -229,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/17/sdut-oj-4-1-%E5%A4%8D%E6%95%B0%E7%B1%BB%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="ckpnxl9n60015a8u4ci9g9x46" data-title="SDUT OJ 4-1 复数类的运算符重载" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/17/sdut-oj-4-1-%E5%A4%8D%E6%95%B0%E7%B1%BB%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="ckpo4q6m90013gku4bfuwcmyu" data-title="SDUT OJ 4-1 复数类的运算符重载" class="article-share-link">Share</a>
       
       
       
@@ -285,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/17/sdut-oj-3-6-%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/" data-id="ckpnxl9n3000ya8u4h59w6e5z" data-title="SDUT OJ 3-6 静态数据成员与静态成员函数" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/17/sdut-oj-3-6-%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E4%B8%8E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/" data-id="ckpo4q6m6000vgku42a2o3ek3" data-title="SDUT OJ 3-6 静态数据成员与静态成员函数" class="article-share-link">Share</a>
       
       
       
@@ -342,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/16/sdut-oj-3-5-%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%BB%9F%E8%AE%A1/" data-id="ckpnxl9mz000sa8u4fu1zdtv7" data-title="SDUT OJ 3-5 学生成绩统计" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/16/sdut-oj-3-5-%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%BB%9F%E8%AE%A1/" data-id="ckpo4q6m4000sgku4arwl0w4z" data-title="SDUT OJ 3-5 学生成绩统计" class="article-share-link">Share</a>
       
       
       
@@ -400,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E4%B8%80%EF%BC%9A%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98/" data-id="ckpnxl9nf001ka8u44nmj9a6w" data-title="SDUT OJ 数据结构实验之图论一：基于邻接矩阵的广度优先搜索遍历" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E4%B8%80%EF%BC%9A%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98/" data-id="ckpo4q6n00029gku4gsdjbdle" data-title="SDUT OJ 数据结构实验之图论一：基于邻接矩阵的广度优先搜索遍历" class="article-share-link">Share</a>
       
       
       
@@ -457,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%9B%9B%EF%BC%9A%E8%BF%B7%E5%AE%AB%E6%8E%A2%E7%B4%A2/" data-id="ckpnxl9nm001qa8u4g2mz9mdk" data-title="SDUT OJ 数据结构实验之图论四：迷宫探索" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/07/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%9B%9B%EF%BC%9A%E8%BF%B7%E5%AE%AB%E6%8E%A2%E7%B4%A2/" data-id="ckpo4q6n1002agku45dts1gl4" data-title="SDUT OJ 数据结构实验之图论四：迷宫探索" class="article-share-link">Share</a>
       
       
       
@@ -508,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/12/03/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%85%AD%EF%BC%9A%E6%9D%91%E6%9D%91%E9%80%9A%E5%85%AC%E8%B7%AF/" data-id="ckpnxl9ni001na8u4cwbyd6fl" data-title="SDUT OJ 数据结构实验之图论六：村村通公路" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/12/03/sdut-oj-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C%E4%B9%8B%E5%9B%BE%E8%AE%BA%E5%85%AD%EF%BC%9A%E6%9D%91%E6%9D%91%E9%80%9A%E5%85%AC%E8%B7%AF/" data-id="ckpo4q6na002kgku40ho1h3nq" data-title="SDUT OJ 数据结构实验之图论六：村村通公路" class="article-share-link">Share</a>
       
       
       
@@ -559,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/11/18/sdut-oj-c%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E6%89%93%E5%8D%B0%E6%95%B0%E5%AD%97%E5%9B%BE%E5%BD%A2/" data-id="ckpnxl9na001ca8u4gdgyd4hp" data-title="SDUT OJ C语言实验——打印数字图形" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/11/18/sdut-oj-c%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C-%E6%89%93%E5%8D%B0%E6%95%B0%E5%AD%97%E5%9B%BE%E5%BD%A2/" data-id="ckpo4q6mw0026gku4dc9a14n6" data-title="SDUT OJ C语言实验——打印数字图形" class="article-share-link">Share</a>
       
       
       
@@ -607,11 +550,57 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2017/11/15/laravel%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E8%AF%A5%E5%80%BC/" data-id="ckpnxl9mq000ea8u45865g54n" data-title="laravel判断数据库中是否有该值" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2017/11/15/laravel%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E8%AF%A5%E5%80%BC/" data-id="ckpo4q6ls000dgku4hzg27lut" data-title="laravel判断数据库中是否有该值" class="article-share-link">Share</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/" rel="tag">laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E5%AE%9A%E5%80%BC/" rel="tag">判断数据库是否有特定值</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-栈的部分操作" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/10/17/%E6%A0%88%E7%9A%84%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/" class="article-date">
+  <time class="dt-published" datetime="2017-10-17T01:56:14.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/10/17/%E6%A0%88%E7%9A%84%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/">栈的部分操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">“<span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="comment">//函数结果状态码</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INFEASIBLE -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OVERFLOW -2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STACK_INIT_SIZE 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STACKINCREMENT</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> elemtype;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">elemtype *top;</span><br><span class="line">elemtype *base;</span><br><span class="line"><span class="keyword">int</span> stacksize;</span><br><span class="line">&#125;Sqstack;</span><br><span class="line"><span class="function">Status <span class="title">InitStack</span><span class="params">(Sqstack *S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">S-&gt;base = (elemtype *)<span class="built_in">malloc</span>(STACK_INIT_SIZE*<span class="keyword">sizeof</span>(elemtype));</span><br><span class="line"><span class="keyword">if</span>(!S-&gt;base) <span class="built_in">exit</span>(OVERFLOW);</span><br><span class="line">S-&gt;top = S-&gt;base;</span><br><span class="line">S-&gt;stacksize = STACK_INIT_SIZE;</span><br><span class="line"><span class="keyword">return</span> OK;</span><br><span class="line">&#125;<span class="comment">//初始化栈</span></span><br><span class="line"><span class="function">Status <span class="title">Stackempty</span><span class="params">(Sqstack *S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(S-&gt;top == S-&gt;base)</span><br><span class="line"><span class="keyword">return</span> TRUE;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">Status <span class="title">Push</span><span class="params">(Sqstack *S,elemtype *e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(S-&gt;top-S-&gt;base&gt;=S-&gt;stacksize)</span><br><span class="line">&#123;</span><br><span class="line">S-&gt;base = (elemtype*)<span class="built_in">realloc</span>(S-&gt;base,(S-&gt;stacksize+STACKINCREMENT)*<span class="keyword">sizeof</span>(elemtype));</span><br><span class="line"><span class="keyword">if</span>(!S-&gt;base) <span class="built_in">exit</span>(OVERFLOW);</span><br><span class="line">S-&gt;top = S-&gt;base + S-&gt;stacksize;</span><br><span class="line">S.stacksize = S.stacksize + STACKINCREMENT;</span><br><span class="line">&#125;</span><br><span class="line">*S-&gt;top++ = e;</span><br><span class="line"><span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">Status <span class="title">Pop</span><span class="params">(Sqstack *S,elemtype *e)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(Stackempty(Sqstack *S))</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br><span class="line">e = *–S-&gt;top;</span><br><span class="line"><span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;“</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/10/17/%E6%A0%88%E7%9A%84%E9%83%A8%E5%88%86%E6%93%8D%E4%BD%9C/" data-id="ckpo4q6nl002xgku40kft6tbh" data-title="栈的部分操作" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
 
     </footer>
   </div>
@@ -636,7 +625,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li></ul>
     </div>
   </div>
 
@@ -665,7 +654,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
     </div>
   </div>
 
@@ -682,10 +671,6 @@
           </li>
         
           <li>
-            <a href="/2020/05/27/2020%E5%8C%97%E7%A7%91%E5%A4%A7%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/">2020北科大考研复试</a>
-          </li>
-        
-          <li>
             <a href="/2019/05/23/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">IT项目管理</a>
           </li>
         
@@ -695,6 +680,10 @@
         
           <li>
             <a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/">记一次服务器无法启动后，从服务器取出数据</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/">移动Web开发之rem</a>
           </li>
         
       </ul>
