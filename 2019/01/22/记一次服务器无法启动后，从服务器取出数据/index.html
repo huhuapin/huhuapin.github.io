@@ -1,156 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>记一次服务器无法启动后，从服务器取出数据 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="前情提要第一天周三收到同学消息，说网站后台登录不上去了，打开网页一看，是mysql连接报错，远程连接进入服务器，提示 Read-only file System ，如下图所示：  后来尝试运行各种命令都没有效果，网上一搜，说是硬盘变成只读，不可写入，我随便打开文件修改一下，果然报错：无法写入。尝试用网上的教程：用fsck修复一下：  f**k! 怎么回事？怎么跟网上的结果不一样啊？怎么感觉问题越来">
-<meta property="og:type" content="article">
-<meta property="og:title" content="记一次服务器无法启动后，从服务器取出数据">
-<meta property="og:url" content="http://example.com/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前情提要第一天周三收到同学消息，说网站后台登录不上去了，打开网页一看，是mysql连接报错，远程连接进入服务器，提示 Read-only file System ，如下图所示：  后来尝试运行各种命令都没有效果，网上一搜，说是硬盘变成只读，不可写入，我随便打开文件修改一下，果然报错：无法写入。尝试用网上的教程：用fsck修复一下：  f**k! 怎么回事？怎么跟网上的结果不一样啊？怎么感觉问题越来">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202622_%E7%9C%8B%E5%9B%BE%E7%8E%8B.png">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202635.png">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202653.png">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120204923.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120205109.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120205706.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120210042.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120211544.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212329.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212745.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212810.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212947.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213035.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213724.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213725.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120214416.jpg">
-<meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120214718.jpg">
-<meta property="article:published_time" content="2019-01-22T10:47:14.000Z">
-<meta property="article:modified_time" content="2021-06-08T14:16:33.699Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="centos，服务器">
-<meta property="article:tag" content="mount">
-<meta property="article:tag" content="恢复数据">
-<meta property="article:tag" content="故障">
-<meta property="article:tag" content="无法启动">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202622_%E7%9C%8B%E5%9B%BE%E7%8E%8B.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>记一次服务器无法启动后，从服务器取出数据 - 胡华聘的个人博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="胡华聘的个人博客"><meta name="msapplication-TileImage" content="https://static.huhuapin.cn/uploads/2017/08/cropped-u2426278734153718334fm11gp0-32x32.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="胡华聘的个人博客"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="事件起因第一天周三收到同学消息，说网站后台登录不上去了，打开网页一看，是mysql连接报错，远程连接进入服务器，提示 Read-only file System ，如下图所示：  后来尝试运行各种命令都没有效果，网上一搜，说是硬盘变成只读，不可写入，我随便打开文件修改一下，果然报错："><meta property="og:type" content="blog"><meta property="og:title" content="记一次服务器无法启动后，从服务器取出数据"><meta property="og:url" content="https://www.huhuapin.cn/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/"><meta property="og:site_name" content="胡华聘的个人博客"><meta property="og:description" content="事件起因第一天周三收到同学消息，说网站后台登录不上去了，打开网页一看，是mysql连接报错，远程连接进入服务器，提示 Read-only file System ，如下图所示：  后来尝试运行各种命令都没有效果，网上一搜，说是硬盘变成只读，不可写入，我随便打开文件修改一下，果然报错："><meta property="og:locale" content="zh_CN"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202622_%E7%9C%8B%E5%9B%BE%E7%8E%8B.png"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202635.png"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202653.png"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120204923.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120205109.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120205706.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120210042.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120211544.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212329.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212745.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212810.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212947.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213035.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213724.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213725.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120214416.jpg"><meta property="og:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120214718.jpg"><meta property="article:published_time" content="2019-01-22T10:47:14.000Z"><meta property="article:modified_time" content="2021-06-09T11:00:45.500Z"><meta property="article:author" content="胡华聘"><meta property="article:tag" content="centos，服务器"><meta property="article:tag" content="mount"><meta property="article:tag" content="恢复数据"><meta property="article:tag" content="故障"><meta property="article:tag" content="无法启动"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202622_%E7%9C%8B%E5%9B%BE%E7%8E%8B.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.huhuapin.cn/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/"},"headline":"记一次服务器无法启动后，从服务器取出数据","image":["http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202622_%E7%9C%8B%E5%9B%BE%E7%8E%8B.png","http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202635.png","http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202653.png","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120204923.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120205109.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120205706.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120210042.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120211544.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212329.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212745.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212810.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212947.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213035.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213724.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120213725.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120214416.jpg","http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120214718.jpg"],"datePublished":"2019-01-22T10:47:14.000Z","dateModified":"2021-06-09T11:00:45.500Z","author":{"@type":"Person","name":"胡华聘"},"publisher":{"@type":"Organization","name":"胡华聘的个人博客","logo":{"@type":"ImageObject","url":"https://static.huhuapin.cn/uploads/2017/08/logo1.jpg"}},"description":"事件起因第一天周三收到同学消息，说网站后台登录不上去了，打开网页一看，是mysql连接报错，远程连接进入服务器，提示 Read-only file System ，如下图所示：  后来尝试运行各种命令都没有效果，网上一搜，说是硬盘变成只读，不可写入，我随便打开文件修改一下，果然报错："}</script><link rel="canonical" href="https://www.huhuapin.cn/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/"><link rel="icon" href="https://static.huhuapin.cn/uploads/2017/08/cropped-u2426278734153718334fm11gp0-32x32.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-DE8QBXRKGH" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-<meta name="generator" content="Hexo 5.4.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main"><article id="post-记一次服务器无法启动后，从服务器取出数据" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/" class="article-date">
-  <time class="dt-published" datetime="2019-01-22T10:47:14.000Z" itemprop="datePublished">2019-01-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      记一次服务器无法启动后，从服务器取出数据
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><h3 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h3><p>周三收到同学消息，说网站后台登录不上去了，打开网页一看，是mysql连接报错，远程连接进入服务器，提示 <code>Read-only file System</code> ，如下图所示：</p>
+        gtag('config', 'G-DE8QBXRKGH');</script><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="https://static.huhuapin.cn/uploads/2017/08/logo1.jpg" alt="胡华聘的个人博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/huhuapin"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2019-01-22T10:47:14.000Z" title="2019-1-22 6:47:14 ├F10: PM┤">2019-01-22</time>发表</span><span class="level-item"><time dateTime="2021-06-09T11:00:45.500Z" title="2021-6-9 7:00:45 ├F10: PM┤">2021-06-09</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></span><span class="level-item">15 分钟读完 (大约2181个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">记一次服务器无法启动后，从服务器取出数据</h1><div class="content"><h2 id="事件起因"><a href="#事件起因" class="headerlink" title="事件起因"></a>事件起因</h2><h3 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h3><p>周三收到同学消息，说网站后台登录不上去了，打开网页一看，是mysql连接报错，远程连接进入服务器，提示 <code>Read-only file System</code> ，如下图所示：</p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202622_%E7%9C%8B%E5%9B%BE%E7%8E%8B.png"></p>
-<p>后来尝试运行各种命令都没有效果，网上一搜，说是硬盘变成只读，不可写入，我随便打开文件修改一下，果然报错：无法写入。尝试用网上的教程：用<code>fsck</code>修复一下：</p>
+<p>后来尝试运行各种命令都没有效果，网上一搜，说是硬盘变成只读，不可写入，我随便打开文件修改一下，果然报错：<span id="more"></span>无法写入。尝试用网上的教程：用<code>fsck</code>修复一下：</p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202635.png"></p>
 <p>f**k! 怎么回事？怎么跟网上的结果不一样啊？怎么感觉问题越来越严重了呢？之后我再输几个命令，全是input/output error。继续网上查资料，说是硬盘的故障，内核无法从磁盘上读取二进制程序 ，下次启动时系统自动 fsck 可能会更正磁盘错误，但首先需要使系统重启 。reboot不管用，让我直接用内核重启，于是，我又作死地输入了以下命令：</p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E5%9B%BE%E7%89%8720190120202653.png"></p>
 <p>two thousand years later…. 卧槽？ 连不上服务器了，心里有一千个草泥马在奔腾。行了，今天先这样吧，明天去机房重启一下。。。</p>
-<p>PS：没事不要瞎搞，更不要随便相信网上的东西！！！</p>
+<blockquote>
+<p>没事不要瞎搞，更不要随便相信网上的东西！！！</p>
+</blockquote>
 <h3 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h3><p>周四来到信息楼，跟老师说明情况后，老师示意我去机房找找去，找了一圈没找到；两圈，没找到。我说老师您知不知道我们的服务器在哪？答曰：我只管开关机房的门，别的管不了。。。无奈又回去找了两圈，还是没找到，去问上一届的学长，学长也不太清楚，又去问了上上届的学长，才了解到服务器是虚拟机。。。What？怎么没人跟我说过啊？然后直接找网络信息中心老师，让他帮忙操作。</p>
-<p>PS：网站的信息，一定要传承下去。不仅仅是资料、信息，还有思想、情怀，不然，以后想找也找不到了。就比如最近的一次，更换备案信息需要域名注册者信息，现在一个多月了，还不知道域名是用谁的信息注册的，到现在域名也还没更换备案，用了12年的域名到现在没法用了。</p>
+<blockquote>
+<p>网站的信息，一定要传承下去。不仅仅是资料、信息，还有思想、情怀，不然，以后想找也找不到了。就比如最近的一次，更换备案信息需要域名注册者信息，现在一个多月了，还不知道域名是用谁的信息注册的，到现在域名也还没更换备案，用了12年的域名到现在没法用了。</p>
+</blockquote>
 <h3 id="第五天"><a href="#第五天" class="headerlink" title="第五天"></a>第五天</h3><p>周天早上，网络信息中心的张老师打电话说没弄好，因为下周不在学校，所以把文件发给我先让我自己弄（到这里我的心已经凉了半截了，你都弄不好，靠我只会几个linux命令怎么修？）。借了移动硬盘去了信息楼。从他那里得知，是因为<strong>主服务器的两个控制器中的一个控制器A出问题了，两控制器之间的通信在12秒钟的时间内发生了中断，正好有部分服务器在这期间进行了读写操作，然后系统都变成只读文件系统了。不过windows系统适应性较好，没出问题，出问题的是部分linux（这里也能看出，linux操作系统不一定就比windows好）</strong>。他在那里一番操作，大致明白了意思是磁盘文件都没问题，是管理某个分区的superblock损坏。给了我两个参考文章，因为开不开机，一直不知道命令在哪里运行。</p>
-<h2 id="发展"><a href="#发展" class="headerlink" title="发展"></a>发展</h2><p>回去之后联系指导老师，指导老师联系了网安实验室的赵老师，赵老师给了很多指导性的意见，首先是想通过加载内核文件来启动系统，不过尝试了几次都失败了，给了一个建设性建议，用linux的救援模式启动，然后通过硬盘挂载先把数据弄出来。 期间尝试了几个办法：下载Ext2 Volume Manager软件，虚拟磁盘映射到物理磁盘；新建一个虚拟磁盘，然后用另一个系统加载它。然而都读不出来磁盘的数据部分。</p>
-<h2 id="正文部分"><a href="#正文部分" class="headerlink" title="正文部分"></a>正文部分</h2><p>虚拟机用救援模式启动，这里我不再赘述，网上一找就能找到一大堆。</p>
+<h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a>经过</h2><p>回去之后联系指导老师，指导老师联系了网安实验室的赵老师，赵老师给了很多指导性的意见，首先是想通过加载内核文件来启动系统，不过尝试了几次都失败了，给了一个建设性建议，用linux的救援模式启动，然后通过硬盘挂载先把数据弄出来。 期间尝试了几个办法：下载Ext2 Volume Manager软件，虚拟磁盘映射到物理磁盘；新建一个虚拟磁盘，然后用另一个系统加载它。然而都读不出来磁盘的数据部分。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>虚拟机用救援模式启动，这里我不再赘述，网上一找就能找到一大堆。</p>
 <p>给虚拟机增加一个虚拟磁盘。</p>
-<p><strong>激活虚拟分区</strong></p>
-<p>首先查看一下逻辑分区的状态：<code>lvscan</code></p>
+<h3 id="激活虚拟分区"><a href="#激活虚拟分区" class="headerlink" title="激活虚拟分区"></a>激活虚拟分区</h3><p>首先查看一下逻辑分区的状态：<code>lvscan</code></p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120204923.jpg"></p>
 <p>发现磁盘是inactive状态，那就先把他们转换为Active状态:<code>vgchange -ay /dev/VolGroup</code></p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120205109.jpg"></p>
 <p>此时虚拟分区已经变成Active状态了。</p>
-<p><strong>查看磁盘分区信息</strong></p>
-<p>parted -l &gt; parted</p>
+<h3 id="查看磁盘分区信息"><a href="#查看磁盘分区信息" class="headerlink" title="查看磁盘分区信息"></a>查看磁盘分区信息</h3><p>parted -l &gt; parted</p>
 <p>查看所有磁盘状态和文件系统类型 <strong>&gt; parted</strong> 是因为一个屏幕显示不完，输出到文件parted。如果卡在某个地方直接Ctrl+C退出就可以。</p>
 <p>vi parted</p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120205706.jpg"></p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120210042.jpg"></p>
 <p>这里看到我们有两个磁盘，一个sda，一个sdb，通过对增加虚拟磁盘之前的状态可以知道,sda是原有磁盘，sdb是新加的磁盘，unrecognized disk label说明磁盘还没分区。下面三个是逻辑分区 root、home、swap。我们待恢复的数据在 root和home里面。它们的文件系统类型为ext4。</p>
-<p><strong>挂载root分区到磁盘</strong></p>
-<p>首先，新建一个文件夹用于挂载分区。</p>
+<h3 id="挂载root分区到磁盘"><a href="#挂载root分区到磁盘" class="headerlink" title="挂载root分区到磁盘"></a>挂载root分区到磁盘</h3><p>首先，新建一个文件夹用于挂载分区。</p>
 <p>mkdir /myhome </p>
 <p>然后挂载home分区到/myhome</p>
 <p>mount -t ext4 /dev/mapper/VolGroup-lv_home /myhome</p>
@@ -159,8 +41,7 @@
 <p>没有报错，证明挂载成功了，看一下。</p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212329.jpg"></p>
 <p>看到我home里面的文件都取出来了</p>
-<p><strong>新磁盘分区并格式化</strong></p>
-<p>fdisk /dev/sdb</p>
+<h3 id="新磁盘分区并格式化"><a href="#新磁盘分区并格式化" class="headerlink" title="新磁盘分区并格式化"></a>新磁盘分区并格式化</h3><p>fdisk /dev/sdb</p>
 <p>这里sdb是我新加的磁盘，一定要确定不是你原来的磁盘，不然格式化之后什么东西都没了</p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120212745.jpg"></p>
 <p>到这里不要慌，按m查看帮助</p>
@@ -180,11 +61,9 @@
 <p>mkdir /home_back<br>mount -t ext4 /dev/sdb1 /home_back/</p>
 <p><img src="http://static.huhuapin.cn/uploads/2019/01/QQ%E6%88%AA%E5%9B%BE20190120214718.jpg"></p>
 <p>这里看到挂载成功了，接下来就可以cp复制了</p>
-<p><strong>取消挂载</strong></p>
-<p>复制完之后，用umount命令取消挂载就行了</p>
+<h3 id="取消挂载"><a href="#取消挂载" class="headerlink" title="取消挂载"></a>取消挂载</h3><p>复制完之后，用umount命令取消挂载就行了</p>
 <p>umount /myhome<br>umount /home_back</p>
-<p><strong>映射新分配的磁盘到物理机</strong></p>
-<p>用VMware把这块新加的磁盘映射到物理机即可读出文件，若是读不出来，可以下载<strong>Ext2 Volume Manager</strong>这个软件试一下，另外一种方式是新建一个虚拟机，把这块磁盘给加进去，然后就可以读出来了。</p>
+<h3 id="映射新分配的磁盘到物理机"><a href="#映射新分配的磁盘到物理机" class="headerlink" title="映射新分配的磁盘到物理机"></a>映射新分配的磁盘到物理机</h3><p>用VMware把这块新加的磁盘映射到物理机即可读出文件，若是读不出来，可以下载<strong>Ext2 Volume Manager</strong>这个软件试一下，另外一种方式是新建一个虚拟机，把这块磁盘给加进去，然后就可以读出来了。</p>
 <blockquote>
 <p><strong>参考文章：</strong></p>
 <p>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jyzhao/p/4778657.html">Linux 磁盘分区、格式化、目录挂载</a></p>
@@ -192,158 +71,41 @@
 <p>3.<a target="_blank" rel="noopener" href="https://www.jb51.net/os/RedHat/506563.html">CentOS虚拟机如何进入救援模式?</a></p>
 <p>4.<a target="_blank" rel="noopener" href="http://baijiahao.baidu.com/s?id=1583694265755792221&wfr=spider&for=pc">玩转vmware虚拟机：如何挂载虚拟机磁盘到物理机</a></p>
 </blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/" data-id="ckpo4q6nq0037gku42qjafyf5" data-title="记一次服务器无法启动后，从服务器取出数据" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">centos，服务器</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mount/" rel="tag">mount</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" rel="tag">恢复数据</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%85%E9%9A%9C/" rel="tag">故障</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/" rel="tag">无法启动</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/01/22/%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          迁移数据库文件到另一台服务器
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">移动Web开发之rem</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML-amp-amp-CSS/">HTML&amp;&amp;CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mysql/">Mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/uncategorized/">uncategorized</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/wordpress/">wordpress</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CI/" rel="tag">CI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/" rel="tag">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array-shift/" rel="tag">array_shift()</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">centos，服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cmder/" rel="tag">cmder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/" rel="tag">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/" rel="tag">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mount/" rel="tag">mount</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/" rel="tag">mysqldump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem/" rel="tag">rem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wordpress/" rel="tag">wordpress</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" rel="tag">二叉查找树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" rel="tag">二维数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%BC%A0%E5%8F%82/" rel="tag">二维数组传参</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E5%AE%9A%E5%80%BC/" rel="tag">判断数据库是否有特定值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E6%A1%86/" rel="tag">命令框</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1/" rel="tag">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" rel="tag">对象数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" rel="tag">希尔排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag">归并排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8E%92%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BD%93/" rel="tag">快排，结构体</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" rel="tag">恢复数据</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%85%E9%9A%9C/" rel="tag">故障</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA/" rel="tag">数据导出</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB/" rel="tag">数据库迁移</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/" rel="tag">无法启动</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="tag">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%99%9A%E6%8B%9F%E7%AB%99%E7%82%B9/" rel="tag">虚拟站点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD/" rel="tag">重载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8D%E8%BD%BD%EF%BC%8Cconst/" rel="tag">重载，const</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" rel="tag">静态成员变量</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CI/" style="font-size: 10px;">CI</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/apache/" style="font-size: 10px;">apache</a> <a href="/tags/array-shift/" style="font-size: 10px;">array_shift()</a> <a href="/tags/centos%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">centos，服务器</a> <a href="/tags/cmder/" style="font-size: 10px;">cmder</a> <a href="/tags/dfs/" style="font-size: 15px;">dfs</a> <a href="/tags/laravel/" style="font-size: 20px;">laravel</a> <a href="/tags/mount/" style="font-size: 10px;">mount</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/mysqldump/" style="font-size: 10px;">mysqldump</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%9F%A5%E6%89%BE%E6%A0%91/" style="font-size: 10px;">二叉查找树</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 10px;">二叉树</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/" style="font-size: 10px;">二维数组</a> <a href="/tags/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%BC%A0%E5%8F%82/" style="font-size: 10px;">二维数组传参</a> <a href="/tags/%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%98%AF%E5%90%A6%E6%9C%89%E7%89%B9%E5%AE%9A%E5%80%BC/" style="font-size: 10px;">判断数据库是否有特定值</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E6%A1%86/" style="font-size: 10px;">命令框</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 20px;">图论</a> <a href="/tags/%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">对象</a> <a href="/tags/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" style="font-size: 10px;">对象数组</a> <a href="/tags/%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">希尔排序</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">归并排序</a> <a href="/tags/%E5%BF%AB%E6%8E%92%EF%BC%8C%E7%BB%93%E6%9E%84%E4%BD%93/" style="font-size: 10px;">快排，结构体</a> <a href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">恢复数据</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%95%85%E9%9A%9C/" style="font-size: 10px;">故障</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA/" style="font-size: 10px;">数据导出</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">数据库迁移</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%95%B0%E7%BB%84/" style="font-size: 10px;">数组</a> <a href="/tags/%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/" style="font-size: 10px;">无法启动</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 10px;">最小生成树</a> <a href="/tags/%E6%A0%88/" style="font-size: 10px;">栈</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 10px;">正则表达式</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E8%99%9A%E6%8B%9F%E7%AB%99%E7%82%B9/" style="font-size: 10px;">虚拟站点</a> <a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 10px;">递归</a> <a href="/tags/%E9%87%8D%E8%BD%BD/" style="font-size: 15px;">重载</a> <a href="/tags/%E9%87%8D%E8%BD%BD%EF%BC%8Cconst/" style="font-size: 10px;">重载，const</a> <a href="/tags/%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" style="font-size: 10px;">静态成员变量</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/06/05/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/23/it%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/">IT项目管理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/22/%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/">迁移数据库文件到另一台服务器</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/">记一次服务器无法启动后，从服务器取出数据</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/">移动Web开发之rem</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/centos%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8/">centos，服务器</a><a class="link-muted mr-2" rel="tag" href="/tags/mount/">mount</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE/">恢复数据</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%95%85%E9%9A%9C/">故障</a><a class="link-muted mr-2" rel="tag" href="/tags/%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/">无法启动</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2019/01/22/%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">迁移数据库文件到另一台服务器</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/"><span class="level-item">移动Web开发之rem</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "gSrIuSMF0CeWFLNM3mh6pPDT-gzGzoHsz",
+            appKey: "mRMCdUc1FJMgDsQ4NMIqtc2H",
+            
+            avatar: "mm",
+            
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            lang: "zh-CN",
+            visitor: true,
+            highlight: true,
+            
+            
+            
+            
+            
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://static.huhuapin.cn/uploads/2017/08/logo1.jpg" alt="胡华聘的个人博客"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">胡华聘的个人博客</p><p class="is-size-6 is-block">欢迎访问</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">7</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">25</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/huhuapin" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/huhuapin"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="CSDN" href="https://blog.csdn.net/qq867840692"><i class="fa fa-cube"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:867840692@qq.com"><i class="fas fa-envelope"></i></a></div></div></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://oxyzhg.cn/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Oxyzhg</span></span><span class="level-right"><span class="level-item tag">oxyzhg.cn</span></span></a></li><li><a class="level is-mobile" href="https://gaojiajun.cn/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">adcdGjj</span></span><span class="level-right"><span class="level-item tag">gaojiajun.cn</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/HTML-amp-amp-CSS/"><span class="level-start"><span class="level-item">HTML&amp;amp;&amp;amp;CSS</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Mysql/"><span class="level-start"><span class="level-item">Mysql</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/PHP/"><span class="level-start"><span class="level-item">PHP</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/uncategorized/"><span class="level-start"><span class="level-item">uncategorized</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/wordpress/"><span class="level-start"><span class="level-item">wordpress</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="level-start"><span class="level-item">数据结构</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"><span class="level-start"><span class="level-item">服务器</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-01-22T13:17:14.000Z">2019-01-22</time></p><p class="title"><a href="/2019/01/22/%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%87%E4%BB%B6%E5%88%B0%E5%8F%A6%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8/">迁移数据库文件到另一台服务器</a></p><p class="categories"><a href="/categories/Mysql/">Mysql</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2019-01-22T10:47:14.000Z">2019-01-22</time></p><p class="title"><a href="/2019/01/22/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E5%90%8E%EF%BC%8C%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E5%87%BA%E6%95%B0%E6%8D%AE/">记一次服务器无法启动后，从服务器取出数据</a></p><p class="categories"><a href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2018-07-16T13:17:27.000Z">2018-07-16</time></p><p class="title"><a href="/2018/07/16/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91%E4%B9%8Brem/">移动Web开发之rem</a></p><p class="categories"><a href="/categories/HTML-amp-amp-CSS/">HTML&amp;amp;&amp;amp;CSS</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2018-06-24T06:46:19.000Z">2018-06-24</time></p><p class="title"><a href="/2018/06/24/laravel-%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/">Laravel 笔记 持续更新</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2018-05-16T15:57:13.000Z">2018-05-16</time></p><p class="title"><a href="/2018/05/16/laravel%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%EF%BC%8C%E6%8A%A5%E9%94%99unable-to-guess-the-mime-type-as-no-guessers-are-available/">laravel上传的图片无法打开，报错Unable to guess the mime type as no guessers are available</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="https://static.huhuapin.cn/uploads/2017/08/logo1.jpg" alt="胡华聘的个人博客" height="28"></a><p class="is-size-7"><span>&copy; 2021 胡华聘</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener">鲁ICP备17033420号</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="CSDN" href="https://blog.csdn.net/qq867840692"><i class="fab fa-cube"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/huhuapin"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
